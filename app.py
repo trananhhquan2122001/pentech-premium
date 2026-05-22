@@ -5,7 +5,12 @@ st.markdown(
     unsafe_allow_html=True
 )
 import yfinance as yf
-import pandas as pd
+st.markdown(
+    """
+    <meta name="google-site-verification" content="DÁN_MÃ_GOOGLE_CỦA_BẠN_VÀO_ĐÂY" />
+    """, 
+    unsafe_allow_html=True
+)
 
 # 1. Cấu hình giao diện chuẩn Doanh Nghiệp
 st.set_page_config(page_title="Pentech Premium", layout="wide", page_icon="💰")
