@@ -1,4 +1,9 @@
-import streamlit as st
+st.markdown(
+    """
+    <meta name="google-site-verification" content="ĐOẠN_MÃ_BẢO_MẬT_CỦA_BẠN" />
+    """, 
+    unsafe_allow_html=True
+)
 import yfinance as yf
 import pandas as pd
 
