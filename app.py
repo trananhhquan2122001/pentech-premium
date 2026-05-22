@@ -5,7 +5,7 @@ import pandas as pd
 # 1. Đoạn mã ẩn xác minh với Google Search Console
 st.markdown(
     """
-    <meta name="google-site-verification" content="<meta name="google-site-verification" content="1CyOz9EFf1oO5gW0ZfBjYM8OdP-cxCUm7UCj-YvL9K4" />
+    <meta name="google-site-verification" content="WmsS8M61mJjBshUmsbMId676wBvX_MvK" />
     """, 
     unsafe_allow_html=True
 )
