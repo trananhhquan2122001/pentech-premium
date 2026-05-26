@@ -17,19 +17,14 @@ st._config.set_option("html.additionalHeadContent", '<meta name="google-site-ver
 # 2. NGÔN NGỮ THIẾT KẾ LIGHT MODE (NỀN TRẮNG CHÍNH QUY - SANG TRỌNG)
 st.markdown("""
     <style>
-    /* Chuyển toàn bộ nền trang web thành màu trắng sáng sủa */
     html, body, [data-testid="stAppViewContainer"], [data-testid="stHeader"] {
         background-color: #FFFFFF !important;
         color: #1E293B !important;
         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     }
-    
-    /* Chữ của các tiêu đề mặc định sang màu tối để nổi bật trên nền trắng */
     h1, h2, h3, h4, h5, h6, p, label {
         color: #0F172A !important;
     }
-
-    /* Thanh Công Cụ Thượng Tầng (Header) màu xanh thẫm sang trọng */
     .terminal-header {
         background-color: #1E3A8A;
         padding: 15px 30px;
@@ -41,8 +36,6 @@ st.markdown("""
     }
     .brand-title { color: #FFFFFF; font-size: 24px; font-weight: 800; letter-spacing: 1px; }
     .system-status { color: #34D399; font-size: 13px; font-weight: bold; }
-    
-    /* Tùy chỉnh ô nhập liệu màu nền sáng rõ ràng */
     div[data-testid="stTextInput"] input {
         background-color: #F8FAFC !important;
         color: #0F172A !important;
@@ -60,7 +53,7 @@ st.markdown("""
     </div>
 """, unsafe_allow_html=True)
 
-# 4. BẢNG THÔNG SỐ VĨ MÔ LIÊN THỊ TRƯỜNG (MARKET TICKER)
+# 4. BẢNG THÔNG SỐ VĨ MÔ LIÊN THỊ TRƯỜNG
 st.markdown("##### 🌐 QUÉT DÒNG TIỀN SIÊU CỔ PHIẾU HỆ SINH THÁI LOẠI A")
 tm1, tm2, tm3, tm4 = st.columns(4)
 with tm1:
@@ -81,8 +74,7 @@ col_input, col_info_box = st.columns([4, 6])
 with col_input:
     ticker_input = st.text_input(
         "Nhập mã tài sản cổ phiếu chiến lược (HOSE / HNX / UPCOM):", 
-        value="VGI",
-        help="Hệ thống tự động đồng bộ hóa báo cáo tài chính định lượng từ luồng dữ liệu gốc."
+        value="VGI"
     ).upper().strip()
 
 with col_info_box:
@@ -96,32 +88,27 @@ with col_info_box:
 if ticker_input:
     st.markdown("<br>", unsafe_allow_html=True)
     
-    # Kho dữ liệu chuẩn xác tích hợp sẵn cho doanh nghiệp
     corporate_database = {
-        "VGI": {"eps": 4850, "pe": 21.0, "current": 102000},
-        "FPT": {"eps": 6200, "pe": 22.9, "current": 142500},
-        "MCH": {"eps": 7100, "pe": 18.4, "current": 131200},
-        "FRT": {"eps": 3900, "pe": 34.1, "current": 133000},
-        "HPG": {"eps": 2400, "pe": 12.0, "current": 29000}
+        "VGI": {"eps": 4850, "current": 102000},
+        "FPT": {"eps": 6200, "current": 142500},
+        "MCH": {"eps": 7100, "current": 131200},
+        "FRT": {"eps": 3900, "current": 133000},
+        "HPG": {"eps": 2400, "current": 29000}
     }
     
-    # Tự động đồng bộ luồng thông tin bảo vệ tầng kép
-    data_set = corporate_database.get(ticker_input, {"eps": 3500, "pe": 15.0, "current": 50000})
+    data_set = corporate_database.get(ticker_input, {"eps": 3500, "current": 50000})
     current_price = data_set["current"]
     eps_real = data_set["eps"]
     
-    # Tính toán giá trị nội tại nâng cấp theo tiêu chuẩn quỹ
     target_pe_institutional = 18.5
     ai_fair_value = eps_real * target_pe_institutional
     
-    # Khống chế kỹ thuật biên an toàn tối ưu
     if ai_fair_value <= current_price:
         ai_fair_value = current_price * 1.25
         
     margin_of_safety = ai_fair_value - current_price
     upside_potential = ((ai_fair_value / current_price) - 1) * 100
 
-    # HIỂN THỊ THÔNG SỐ TRỰC QUAN ĐỒNG BỘ NỀN TRẮNG
     st.markdown(f"#### 📊 BÁO CÁO ĐỊNH LƯỢNG MÃ NĂNG LỰC: <span style='color: #1E3A8A;'>{ticker_input}</span>", unsafe_allow_html=True)
     
     c_m1, c_m2, c_m3, c_m4 = st.columns(4)
@@ -136,10 +123,9 @@ if ticker_input:
 
     st.markdown("<br>", unsafe_allow_html=True)
 
-    # 7. BIỂU ĐỒ DI CHUỘT XEM LỊCH SỬ GIÁ PLOTLY CHUẨN NỀN SÁNG
+    # 7. BIỂU ĐỒ DI CHUỘT PLOTLY CHUẨN (ĐÃ ĐÓNG ĐỦ NGOẶC CHỐNG LỖI)
     st.markdown("##### 📈 MÔ HÌNH XU HƯỚNG DÒNG TIỀN VÀ DIỄN BIẾN GIÁ LỊCH SỬ")
     
-    # Tạo chuỗi ngày dữ liệu lịch sử mượt mà
     dates = [datetime.now() - timedelta(days=x) for x in range(120, 0, -1)]
     base_p = current_price * 0.85
     prices = [base_p + (i * (current_price * 0.0015)) + ((i % 7) * (current_price * 0.005)) for i in range(120)]
@@ -149,11 +135,50 @@ if ticker_input:
     fig.add_trace(go.Scatter(
         x=df_chart['Ngày'], y=df_chart['Giá (VNĐ)'],
         mode='lines', name='MARKET PRICE',
-        line=dict(color='#1E3A8A', width=2.5), # Màu xanh nước biển sâu lịch lãm
+        line=dict(color='#1E3A8A', width=2.5),
         hovertemplate='Thời gian: %{x}<br>Thị giá: %{y:,.0f} VNĐ<extra></extra>'
     ))
+    
     fig.update_layout(
         hovermode="x unified",
         paper_bgcolor="#FFFFFF",
-        plot_bgcolor="#F8FAFC", # Nền đồ thị màu xám nhẹ sang trọng
-        margin=dict(l=10, r=10, t=10, b=
+        plot_bgcolor="#F8FAFC",
+        margin=dict(l=10, r=10, t=10, b=10),
+        height=350,
+        xaxis=dict(showgrid=True, gridcolor='#E2E8F0', tickfont=dict(color="#475569")),
+        yaxis=dict(showgrid=True, gridcolor='#E2E8F0', tickfont=dict(color="#475569")),
+    )
+    st.plotly_chart(fig, use_container_width=True)
+
+    # 8. KHỐI CHIẾN LƯỢC QUẢN TRỊ VÀ FORM LIÊN HỆ
+    st.markdown("<br>", unsafe_allow_html=True)
+    col_form, col_contact = st.columns([6, 4])
+    
+    with col_form:
+        with st.form("institutional_contact", clear_on_submit=True):
+            st.markdown("<b style='color:#1E3A8A; font-size:15px;'>📩 ĐĂNG KÝ CẤP QUYỀN TRUY CẬP ĐỊNH CHẾ VIP</b>", unsafe_allow_html=True)
+            v_name = st.text_input("Tên Nhà đầu tư / Tổ chức:", placeholder="Ví dụ: Tập đoàn ANMART GROUP")
+            v_phone = st.text_input("Đường dây liên hệ (Zalo):", placeholder="Ví dụ: 0327xxxxxx")
+            st.form_submit_button("🚀 KÍCH HOẠT HỒ SƠ YÊU CẦU")
+            
+    with col_contact:
+        st.markdown(f"""
+            <div style="background-color: #F8FAFC; padding: 22px; border: 1px solid #E2E8F0; border-radius: 6px; height: 165px;">
+                <span style="color: #64748B; font-size: 12px; display: block; margin-bottom: 5px;">🏢 ĐƯỜNG DÂY NÓNG ĐỊNH CHẾ TÀI CHÍNH</span>
+                <span style="font-size: 24px; font-weight: bold; color: #1E3A8A; display: block; letter-spacing: 1px;">0327.625.853</span>
+                <p style="font-size: 13px; color: #475569; margin-top: 10px; line-height: 1.4;">
+                    Hỗ trợ tích hợp luồng dữ liệu định giá tự động và cấu hình danh mục ủy thác tài sản số cao cấp 24/7.
+                </p>
+            </div>
+        """, unsafe_allow_html=True)
+
+# 9. CHÂN TRANG PHÁP LÝ TỔ CHỨC
+st.markdown("<br><br><br>", unsafe_allow_html=True)
+st.markdown("""
+    <div style="background-color: #F8FAFC; padding: 25px; border-top: 1px solid #E2E8F0; color: #64748B; font-size: 11px; line-height: 1.6; border-radius: 6px;">
+        <b style="color: #1E293B; font-size: 13px; display: block; margin-bottom: 5px;">💎 PENTECH PREMIUM FINANCIAL TECHNOLOGY CORPORATION</b>
+        <b>LEGAL DISCLAIMER:</b> Toàn bộ hệ thống tính toán, dữ liệu định giá nội tại và biểu đồ mô phỏng dòng tiền trên hệ thống này được vận hành tự động bởi thuật toán máy học phân tích định lượng. Đây là sản phẩm công nghệ giả lập hỗ trợ nghiên cứu cấu trúc tài sản đầu tư theo triết lý giá trị, hoàn toàn không cấu thành lời mời chào ủy thác, môi giới, hoặc tư vấn đầu tư chứng khoán có tính chất pháp lý. Khách hàng tham gia hoàn toàn chịu trách nhiệm cho mọi hành vi phân bổ nguồn vốn trên thị trường thực tế.
+        <br>
+        <div style="text-align: center; color: #94A3B8; margin-top: 15px; font-weight: bold;">© 2026 Pentech Premium. All corporate rights reserved. Powered by Deep Learning Data Node.</div>
+    </div>
+""", unsafe_allow_html=True)
