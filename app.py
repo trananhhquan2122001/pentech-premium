@@ -1,12 +1,15 @@
 import streamlit as st
 import yfinance as yf
 
-# Cấu hình giao diện trang web
+# Tiêm mã xác minh Google Search Console mới trực tiếp vào đầu trang web bằng cấu hình Streamlit
 st.set_page_config(
     page_title="Pentech Premium - Hệ Thống Định Giá Cổ Phiếu AI",
     page_icon="💎",
     layout="wide"
 )
+
+# Cấu hình mã xác minh Google mới tinh của bạn
+st._config.set_option("html.additionalHeadContent", '<meta name="google-site-verification" content="448da2da278475de" />')
 
 # Giao diện chính của ứng dụng
 st.title("💎 Pentech Premium")
@@ -37,7 +40,7 @@ if ticker_real:
             ai_target = current_price * 1.25
             upside = "25%"
             
-            # Hiển thị kết quả động - Nhập mã nào nhảy số mã đó!
+            # Hiển thị kết quả động
             col1, col2 = st.columns(2)
             with col1:
                 st.metric(label=f"Giá thị trường hiện tại của {ticker_input}", value=f"{current_price:,.0f} VNĐ")
