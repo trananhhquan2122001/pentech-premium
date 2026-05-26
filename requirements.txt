@@ -1,3 +1,4 @@
 streamlit
 plotly
 vnstock3
+ipython
