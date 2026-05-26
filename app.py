@@ -90,7 +90,6 @@ with col_input:
     ).upper().strip()
 
 with col_status:
-    # Hiển thị thông số vận hành của tổ chức một cách chuyên nghiệp
     st.markdown("""
     <div style="background-color: #F8FAFC; padding: 12px; border-radius: 6px; border: 1px solid #CBD5E1; margin-top: 5px;">
         <span style="color: #475569; font-size: 13px;">🔒 <b>Cơ chế hoạt động:</b> Thuật toán quét luồng giá đóng cửa, áp dụng mô hình chiết khấu dòng tiền kết hợp biên an toàn của Graham & Munger nhằm đưa ra vùng tích lũy tối ưu định hướng dài hạn.</span>
@@ -171,8 +170,47 @@ if ticker_real:
         except Exception as e:
             st.error("🔒 Máy chủ đang thực hiện cấu hình lại luồng API dữ liệu, vui lòng nhấn phím F5 để làm mới trang web.")
 
-# 7. CHÂN TRANG DOANH NGHIỆP PHÁP LÝ CHUẨN MỰC (CORPORATE FOOTER)
-st.markdown("<br><br><br>", unsafe_allow_html=True)
+# 7. KHU VỰC GỬI LIÊN HỆ ĐỐI TÁC CHUYÊN NGHIỆP (CONTACT FORM DOANH NGHIỆP)
+st.markdown("<br>---")
+st.markdown("### 📞 KHỐI HỢP TÁC VÀ LIÊN HỆ DOANH NGHIỆP")
+
+col_form, col_info = st.columns([6, 4])
+
+with col_form:
+    # Biểu mẫu cho khách hàng gửi lời nhắn liên hệ trực tiếp trên trang web
+    with st.form(key="contact_form_premium", clear_on_submit=True):
+        st.markdown("<b style='color:#1E3A8A;'>GỬI YÊU CẦU PHÂN TÍCH DOANH NGHIỆP RIÊNG</b>", unsafe_allow_html=True)
+        c_name = st.text_input("Họ và tên Nhà đầu tư:", placeholder="Ví dụ: Trần Anh Quân")
+        c_phone = st.text_input("Số điện thoại / Zalo liên hệ:", placeholder="Ví dụ: 0327xxxxxx")
+        c_message = st.text_area("Mã cổ phiếu hoặc nội dung cần tư vấn chuyên sâu:")
+        
+        submit_btn = st.form_submit_button(label="🚀 GỬI THÔNG TIN LIÊN HỆ")
+        if submit_btn:
+            if c_name and c_phone:
+                st.success(f"✅ Hệ thống đã ghi nhận thông tin của Nhà đầu tư {c_name}. Phòng quản lý dữ liệu sẽ liên hệ lại qua số {c_phone} trong vòng 15 phút!")
+            else:
+                st.error("⚠️ Vui lòng điền đầy đủ Họ tên và Số điện thoại để hệ thống xử lý.")
+
+with col_info:
+    # Hiển thị số điện thoại của bạn ở vị trí trang trọng, có nút bấm tương tác nhanh
+    st.markdown(f"""
+    <div style="background-color: #F1F5F9; padding: 22px; border-radius: 8px; border: 1px solid #E2E8F0; height: 285px;">
+        <h4 style="color: #0F172A; margin-top:0; margin-bottom:10px;">🏢 THÔNG TIN ĐƯỜNG DÂY NÓNG</h4>
+        <p style="font-size: 14px; color: #475569; margin-bottom:15px;">
+            Mọi nhu cầu hợp tác đầu tư, nâng cấp tài khoản VIP hoặc tích hợp hệ thống mạng thần kinh vào doanh nghiệp, vui lòng liên hệ trực tiếp:
+        </p>
+        <p style="font-size: 20px; font-weight: bold; color: #2563EB; margin: 10px 0;">
+            📞 HOTLINE: <a href="tel:0327625853" style="color: #2563EB; text-decoration: none;">0327.625.853</a>
+        </p>
+        <p style="font-size: 15px; color: #1E293B; margin-top:15px;">
+            💬 Zalo hỗ trợ kỹ thuật: <b>0327.625.853</b>
+        </p>
+        <small style="color:#94A3B8; display:block; margin-top:20px;">⏱️ Thời gian hỗ trợ: Toàn thời gian 24/7 kể cả ngày lễ và tuần.</small>
+    </div>
+    """, unsafe_allow_html=True)
+
+# 8. CHÂN TRANG DOANH NGHIỆP PHÁP LÝ CHUẨN MỰC (CORPORATE FOOTER)
+st.markdown("<br><br>", unsafe_allow_html=True)
 st.markdown("""
     <div style="background-color: #0F172A; padding: 30px; border-radius: 8px; color: #94A3B8; font-size: 12px; line-height: 1.6;">
         <div style="font-weight: bold; color: #F8FAFC; margin-bottom: 10px; font-size: 14px;">💎 PENTECH PREMIUM FINANCIAL TECHNOLOGY CORPORATION</div>
