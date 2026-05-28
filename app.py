@@ -20,9 +20,9 @@ st.set_page_config(
 # Giữ mã xác minh Google Search Console của bạn Quân
 st._config.set_option("html.additionalHeadContent", '<meta name="google-site-verification" content="448da2da278475de" />')
 
-# 🔥 ĐÃ VÁ LỖI CHÍ MẠNG: Sửa 'not block' thành 'not in' đúng cú pháp Python
+# 🔥 ĐÃ CẬP NHẬT MẬT KHẨU MẶC ĐỊNH MỚI: 'Trananhquan@2001'
 if "dynamic_license_key" not in st.session_state:
-    st.session_state["dynamic_license_key"] = "PENTECH500K"
+    st.session_state["dynamic_license_key"] = "Trananhquan@2001"
 
 # ==========================================
 # 2. NGÔN NGỮ THIẾT KẾ NỀN TRẮNG TOÀN PHẦN - CHỮ ĐEN ĐẬM (PURE LIGHT STYLE)
@@ -165,7 +165,7 @@ st.markdown("""
 st.markdown("""
     <div class="premium-header">
         <div class="premium-title">Pentech Premium <span style='font-size:16px; color:#000000; font-weight:600;'>INSTITUTIONAL TERMINAL</span></div>
-        <div class="premium-subtitle">Hạ tầng Real-time 3 sàn • Đồng bộ mật mã quản trị tối mật</div>
+        <div class="premium-subtitle">Hạ tầng Real-time 3 sàn • Bản cập nhật mật mã bảo mật nâng cao</div>
     </div>
 """, unsafe_allow_html=True)
 
@@ -236,7 +236,7 @@ accurate_corporate_db = {
     "FPT": {"name": "Tập đoàn FPT", "exchange": "HOSE", "sector": "CÔNG NGHỆ & VIỄN THÔNG", "eps": 6200, "growth": 25, "roe": 26.0, "roi": 19.1, "moat": "Độc quyền quy mô xuất khẩu phần mềm và nhân lực công nghệ số"},
     "CTR": {"name": "Công trình Viettel", "exchange": "HOSE", "sector": "CÔNG NGHỆ & VIỄN THÔNG", "eps": 5150, "growth": 28, "roe": 22.0, "roi": 16.5, "moat": "Lợi thế vận hành và sở hữu hạ tầng trạm phát sóng 5G toàn quốc"},
     "MCH": {"name": "Masan Consumer", "exchange": "UPCoM", "sector": "TIÊU DÙNG & BÁN LẺ", "eps": 7100, "growth": 22, "roe": 31.0, "roi": 22.4, "moat": "Thương hiệu hàng tiêu dùng thiết yếu nắm giữ thị phần tuyệt đối Việt Nam"},
-    "VGI": {"name": "Viettel Toàn Cầu", "exchange": "UPCoM", "sector": "CÔNG NGHỆ & VIỄN THÔNG", "eps": 4850, "growth": 32, "roe": 24.0, "roi": 15.8, "moat": "Độc quyền thị phần hạ tầng viễn thông tại many quốc gia quốc tế"},
+    "VGI": {"name": "Viettel Toàn Cầu", "exchange": "UPCoM", "sector": "CÔNG NGHỆ & VIỄN THÔNG", "eps": 4850, "growth": 32, "roe": 24.0, "roi": 15.8, "moat": "Độc quyền thị phần hạ tầng viễn thông tại nhiều quốc gia quốc tế"},
     "HPG": {"name": "Tập đoàn Hòa Phát", "exchange": "HOSE", "sector": "THÉP, THƯƠNG MẠI & SẢN XUẤT", "eps": 2400, "growth": 15, "roe": 16.0, "roi": 12.5, "moat": "Lợi thế dẫn đầu về chi phí sản xuất thép thấp nhất phân khúc ASEAN"}
 }
 
@@ -337,7 +337,7 @@ strategies_35 = [
     {"id": 13, "book": "Trên Đỉnh Phố Wall - Peter Lynch", "title": "Ma trận phân loại 6 nhóm cổ phiếu chiến lược", "desc": f"Xác định chính xác vị thế doanh nghiệp để đặt mục tiêu hiệu suất kỳ vọng phù hợp. Trạm Terminal chấm mã {tkA} sở hữu mức sinh lời hiệu quả ROE đạt {data_A['roe']:.1f}%."},
     {"id": 14, "book": "Beating the Street - Peter Lynch", "title": "Phương pháp Scuttlebutt điều tra thực địa vĩ mô", "desc": "Khai thác cơ hội đầu tư tăng trưởng bằng cách trực tiếp quan sát hành vi tiêu dùng và mở rộng chuỗi cửa hàng trong đời sống thực tế trước khi số liệu lên báo cáo báo chí."},
     {"id": 15, "book": "Inside Job - Khủng hoảng vĩ mô", "title": "Phòng vệ khủng hoảng thanh khoản hệ thống nợ", "desc": "Nhận diện các dấu hiệu căng thẳng tín dụng toàn cầu để nhanh chóng đưa tổng tài sản về trạng thái an toàn, ưu tiên tích trữ các cổ phiếu dịch vụ cốt lõi."},
-    {"id": 16, "book": "Peter Drucker - Quản trị thực hành", "title": "Kiểm toán hiệu năng bộ máy điều hành doanh nghiệp", "desc": "Thẩm định chất lượng ban lãnh đạo dựa trên năng lực tối ưu hóa nguồn nhân lực và tính minh bạch trong việc thực hiện các cam kết kinh doanh dài hạn."},
+    {"id": 16, "book": "Peter Drucker - Quản trị thực hành", "title": "Kiểm toán hiệu năng bộ máy điều hành doanh nghiệp", "desc": "Thẩm định chất lượng ban lãnh đạo dựa trên năng lực tối ưu hóa nguồn nhân lực và tính minhạch trong việc thực hiện các cam kết kinh doanh dài hạn."},
     {"id": 17, "book": "Michael Porter - Chiến lược cạnh tranh vĩ mô", "title": "Cấu hình 3 chiến lược dẫn dắt thị trường", "desc": "Đánh giá khả năng bứt phá của doanh nghiệp dựa trên một trong ba hướng đi quyết định: Khác biệt hóa sản phẩm, Dẫn đầu chi phí thấp, hoặc Tập trung phân khúc chuyên biệt."},
     {"id": 18, "book": "Philip Fisher - Cổ phiếu thường lợi nhuận phi thường", "title": "15 tiêu chí sàng lọc siêu cổ phiếu tăng trưởng đột biến", "desc": "Yêu cầu khắt khe về năng lực nghiên cứu phát triển sản phẩm mới (R&D) và mối quan hệ lao động nội bộ ban điều hành xuất sắc."},
     {"id": 19, "book": "Ray Dalio - Nguyên tắc (Principles)", "title": "Thiết lập danh mục bất đối xứng All-Weather Portfolio", "desc": "Xây dựng cấu trúc danh mục cân bằng, có khả năng tự động phòng vệ và tăng trưởng bền vững xuyên qua mọi chu kỳ lạm phát, giảm phát toàn cầu."},
