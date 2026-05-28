@@ -20,8 +20,8 @@ st.set_page_config(
 # Giữ mã xác minh Google Search Console của bạn Quân
 st._config.set_option("html.additionalHeadContent", '<meta name="google-site-verification" content="448da2da278475de" />')
 
-# Khởi tạo bộ nhớ ngầm lưu trữ mật khẩu kích hoạt trên máy chủ
-if "dynamic_license_key" not block st.session_state:
+# 🔥 ĐÃ VÁ LỖI CHÍ MẠNG: Sửa 'not block' thành 'not in' đúng cú pháp Python
+if "dynamic_license_key" not in st.session_state:
     st.session_state["dynamic_license_key"] = "PENTECH500K"
 
 # ==========================================
@@ -152,7 +152,6 @@ st.markdown("""
         border: 2px solid #000000 !important;
     }
     
-    /* KHU VỰC ĐIỀU HÀNH ADMIN BOX */
     .admin-box {
         background-color: #F3F4F6;
         border: 3px dashed #000000;
@@ -166,7 +165,7 @@ st.markdown("""
 st.markdown("""
     <div class="premium-header">
         <div class="premium-title">Pentech Premium <span style='font-size:16px; color:#000000; font-weight:600;'>INSTITUTIONAL TERMINAL</span></div>
-        <div class="premium-subtitle">Hạ tầng Real-time 3 sàn • Bản cập nhật Quản trị tối mật của CEO</div>
+        <div class="premium-subtitle">Hạ tầng Real-time 3 sàn • Đồng bộ mật mã quản trị tối mật</div>
     </div>
 """, unsafe_allow_html=True)
 
@@ -211,6 +210,12 @@ with st.expander("💎 CHÚNG TÔI LÀ AI & SỨ MỆNH PHỤNG SỰ XA HỘI PE
             </p>
         """, unsafe_allow_html=True)
 
+with st.expander("⚙️ BAN ĐIỀU HÀNH: Tải ảnh chân dung thay thế lên hệ thống"):
+    uploaded_image = st.file_uploader("Chọn ảnh chân dung mới của bạn (Định dạng JPG, PNG):", type=["jpg", "jpeg", "png"])
+    if uploaded_image is not None:
+        with open("founder_fixed.jpg", "wb") as f: f.write(uploaded_image.getbuffer())
+        st.success("🎉 Đã đồng bộ ảnh chân dung CEO Trần Anh Quân vào hệ thống!")
+
 
 # ==========================================
 # 🎛️ ENGINE CÀO GIÁ TỰ ĐỘNG REAL-TIME 3 SÀN
@@ -231,7 +236,7 @@ accurate_corporate_db = {
     "FPT": {"name": "Tập đoàn FPT", "exchange": "HOSE", "sector": "CÔNG NGHỆ & VIỄN THÔNG", "eps": 6200, "growth": 25, "roe": 26.0, "roi": 19.1, "moat": "Độc quyền quy mô xuất khẩu phần mềm và nhân lực công nghệ số"},
     "CTR": {"name": "Công trình Viettel", "exchange": "HOSE", "sector": "CÔNG NGHỆ & VIỄN THÔNG", "eps": 5150, "growth": 28, "roe": 22.0, "roi": 16.5, "moat": "Lợi thế vận hành và sở hữu hạ tầng trạm phát sóng 5G toàn quốc"},
     "MCH": {"name": "Masan Consumer", "exchange": "UPCoM", "sector": "TIÊU DÙNG & BÁN LẺ", "eps": 7100, "growth": 22, "roe": 31.0, "roi": 22.4, "moat": "Thương hiệu hàng tiêu dùng thiết yếu nắm giữ thị phần tuyệt đối Việt Nam"},
-    "VGI": {"name": "Viettel Toàn Cầu", "exchange": "UPCoM", "sector": "CÔNG NGHỆ & VIỄN THÔNG", "eps": 4850, "growth": 32, "roe": 24.0, "roi": 15.8, "moat": "Độc quyền thị phần hạ tầng viễn thông tại nhiều quốc gia đang phát triển"},
+    "VGI": {"name": "Viettel Toàn Cầu", "exchange": "UPCoM", "sector": "CÔNG NGHỆ & VIỄN THÔNG", "eps": 4850, "growth": 32, "roe": 24.0, "roi": 15.8, "moat": "Độc quyền thị phần hạ tầng viễn thông tại many quốc gia quốc tế"},
     "HPG": {"name": "Tập đoàn Hòa Phát", "exchange": "HOSE", "sector": "THÉP, THƯƠNG MẠI & SẢN XUẤT", "eps": 2400, "growth": 15, "roe": 16.0, "roi": 12.5, "moat": "Lợi thế dẫn đầu về chi phí sản xuất thép thấp nhất phân khúc ASEAN"}
 }
 
@@ -283,7 +288,7 @@ with col_box1:
 with col_box2:
     st.markdown(f"""<div class="compare-box"><h4 style='margin-top:0; border-bottom:2px solid #000000; padding-bottom:5px; color:#000000; font-weight:800;'>📊 TRẠM B: {tkB} ({data_B['exchange']})</h4><p style='color:#000000;'>• Doanh nghiệp: <b>{data_B['name']}</b></p><p style='color:#000000;'>• Phân ngành: <span style='background-color:#000000; color:#FFFFFF; padding:2px 6px; font-weight:800;'>{data_B['sector']}</span></p><p style='color:#000000;'>• Giá Real-time chuẩn xác: <b style='font-size:20px; color:#000000;'>{data_B['current']:,.0f} VNĐ</b></p><p style='color:#000000;'>• <b>CHỈ SỐ TRÍCH XUẤT: EPS {data_B['eps']:,.0f} VNĐ | ROE {data_B['roe']:.1f}% | ROI {data_B['roi']:.1f}%</b></p><p style='color:#000000;'>• Tăng trưởng thu nhập: +{data_B['growth']}% | Hào bảo vệ: <i>{data_B['moat']}</i></p></div>""", unsafe_allow_html=True)
 
-# Biểu đồ lịch sử
+# Biểu đồ diễn biến
 dates = [datetime.now() - timedelta(days=x) for x in range(100, 0, -1)]
 fig = go.Figure()
 fig.add_trace(go.Scatter(x=dates, y=[data_A['current'] * (0.88 + (i*0.0014)) for i in range(100)], mode='lines', name=tkA, line=dict(color='#000000', width=3)))
@@ -310,12 +315,10 @@ with col_f3:
 # ==========================================
 st.markdown("<br>### 🏛️ ACADEMY: HỆ THỐNG ĐÀO TẠO 35 CHIẾN LƯỢC ĐẦU TƯ KINH ĐIỂN", unsafe_allow_html=True)
 
-# Ô nhập mã mở khóa dành cho Học viên
 col_key1, col_key2 = st.columns([5, 5])
 with col_key1:
     user_license_key = st.text_input("🔑 NHÀ ĐẦU TƯ: Nhập mã kích hoạt (License Key) để mở khóa 20 chiến lược nâng cao:", type="password")
 
-# Cơ chế tối ưu: Toàn bộ 35 chiến lược sẽ mở nếu gõ đúng License Key HOẶC gõ đúng Mật khẩu Quản trị của Quân
 is_unlocked = (user_license_key == st.session_state["dynamic_license_key"]) or (user_license_key == "ADMINQUAN2026")
 
 strategies_35 = [
@@ -342,7 +345,7 @@ strategies_35 = [
     {"id": 21, "book": "William O'Neil - Bộ lọc CANSLIM nâng cao", "title": "Tích hợp kỹ thuật bùng nổ khối lượng và tăng trưởng thu nhập", "desc": "Quét toàn diện chữ N (Sản phẩm mới) và chữ S (Cung cầu cổ phiếu cô đặc) để giải ngân nguồn lực tại chân sóng lớn vĩ mô."},
     {"id": 22, "book": "Harry Dent - Thương vụ để đời", "title": "Đón đầu làn sóng dịch chuyển nhân khẩu học thế kỷ 21", "desc": "Định vị dòng vốn dài hạn bám sát biểu đồ chi tiêu lớn nhất của thế hệ trung lưu mới tại thị trường các quốc gia đang phát triển."},
     {"id": 23, "book": "W. Chan Kim - Chiến lược đại dương xanh", "title": "Kiến tạo khoảng trống thị trường vô hiệu hóa đối thủ", "desc": "Tìm kiếm các pháp nhân bứt phá ra khỏi đại dương đỏ cạnh tranh khốc liệt bằng cách mở ra không gian giá trị hoàn toàn mới."},
-    {"id": 24, "book": "Gary Hamel - Cạnh tranh cho tương lai", "title": "Xác lập năng lực cốt lõi dẫn dắt cuộc chơi", "desc": "Doanh nghiệp xuất sắc bắt buộc phải sở hữu những kỹ năng công nghệ độc quyền khó có thể bị sao chép hay thay thế trong dài hạn."},
+    {"id": 24, "book": "Gary Hamel - Cạnh tranh cho tương lai", "title": "Xác lập năng lực cốt lõi dẫn dắt cuộc chơi", "desc": "Doanh nghiệp xuất sắc bắt buộc phải sở hữu những kỹ năng công nghệ độc quyền khó có thể bị sao chép hay thế thế trong dài hạn."},
     {"id": 25, "book": "Richard Nixon - Biographies", "title": "Nghệ thuật địa chính trị và quản trị khủng hoảng thượng tầng", "desc": "Hiểu rõ các nước cờ vĩ mô thế giới tác động trực tiếp đến tỷ giá, chu kỳ dòng vốn liên quốc gia để đưa ra quyết định phòng thủ nguồn lực."},
     {"id": 26, "book": "Margaret Thatcher - Hồi ký thép", "title": "Tư duy tự do thị trường và tư nhân hóa hạ tầng", "desc": "Ưu tiên dòng vốn vào các doanh nghiệp tư nhân năng động, sở hữu cơ chế vận hành linh hoạt tối ưu hóa chi phí sản xuất thương mại sâu."},
     {"id": 27, "book": "Tony Blair - Hành trình quyền lực", "title": "Chiến lược Con đường thứ ba và toàn cầu hóa dòng vốn", "desc": "Phân tích cấu trúc dòng vốn ngoại FDI dịch chuyển để đón đầu các mã hưởng lợi lớn từ chuỗi cung ứng logistics quốc tế."},
@@ -410,7 +413,6 @@ with st.expander("🛠️ TRẠM QUẢN TRỊ THƯỢNG TẦNG (CHỈ DÀNH RIÊ
         st.success("🎉 Xin chào Chủ tịch Trần Anh Quân! Hệ thống điều hành Pentech Premium đã mở.")
         st.markdown(f"• Mã kích hoạt hiện tại đang cấp cho khách hàng: **{st.session_state['dynamic_license_key']}**")
         
-        # Ô cho phép Quân tự sửa đổi License Key theo ý mình bất cứ lúc nào
         new_key = st.text_input("Cài đặt Mật khẩu kích hoạt mới cho Gói 2 / Gói 3 tại đây:", value=st.session_state['dynamic_license_key'])
         if st.button("💾 XÁC NHẬN LƯU MẬT KHẨU MỚI"):
             st.session_state["dynamic_license_key"] = new_key
