@@ -20,7 +20,7 @@ st.set_page_config(
 # Giữ mã xác minh Google Search Console của bạn Quân
 st._config.set_option("html.additionalHeadContent", '<meta name="google-site-verification" content="448da2da278475de" />')
 
-# 🔥 ĐÃ CẬP NHẬT MẬT KHẨU MẶC ĐỊNH MỚI: 'Trananhquan@2001'
+# Khởi tạo bộ nhớ ngầm lưu trữ mật khẩu kích hoạt trên máy chủ
 if "dynamic_license_key" not in st.session_state:
     st.session_state["dynamic_license_key"] = "Trananhquan@2001"
 
@@ -53,7 +53,7 @@ st.markdown("""
         margin-bottom: 35px;
     }
     .premium-title { color: #000000 !important; font-size: 32px; font-weight: 800; letter-spacing: -0.5px; }
-    .premium-subtitle { color: #000000 !important; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; }
+    .premium-subtitle { color: #000000 !important; font-size: 13px; font-700; text-transform: uppercase; letter-spacing: 1.5px; }
     
     .founder-card {
         background-color: #FFFFFF;
@@ -142,14 +142,19 @@ st.markdown("""
         font-weight: 600 !important;
     }
     
-    button[data-testid="baseButton-secondaryFormSubmit"] {
+    /* Thiết kế nút bấm hành động có viền nổi bật vững chắc */
+    button {
         background-color: #000000 !important;
         color: #FFFFFF !important;
         font-weight: 800 !important;
-        font-size: 16px !important;
+        font-size: 15px !important;
         border-radius: 4px !important;
-        width: 100% !important;
         border: 2px solid #000000 !important;
+        padding: 10px 20px !important;
+    }
+    button:hover {
+        background-color: #333333 !important;
+        border-color: #333333 !important;
     }
     
     .admin-box {
@@ -165,7 +170,7 @@ st.markdown("""
 st.markdown("""
     <div class="premium-header">
         <div class="premium-title">Pentech Premium <span style='font-size:16px; color:#000000; font-weight:600;'>INSTITUTIONAL TERMINAL</span></div>
-        <div class="premium-subtitle">Hạ tầng Real-time 3 sàn • Bản cập nhật mật mã bảo mật nâng cao</div>
+        <div class="premium-subtitle">Hạ tầng Real-time 3 sàn • Đã sửa lỗi phím Enter kẹt hệ thống</div>
     </div>
 """, unsafe_allow_html=True)
 
@@ -204,7 +209,7 @@ with st.expander("💎 CHÚNG TÔI LÀ AI & SỨ MỆNH PHỤNG SỰ XA HỘI PE
                 <b>Pentech Premium</b> được vận hành dựa trên triết lý cốt lõi: Kiến tạo cơ hội tiếp cận tài chính công bằng. Chúng tôi loại bỏ toàn bộ các rào cản thuật ngữ phức tạp để mang đến một trạm tra cứu Terminal minh bạch nhất.
                 <br><br>
                 <b style='font-size:17px; color:#000000; display:block; border-left:4px solid #000000; padding-left:12px; font-style:italic; margin-bottom:10px;'>
-                    "Sứ mệnh của chúng tôi là phụng sự người nghèo, hỗ trợ cộng đồng chưa có kiến thức chuyên sâu về tài chính tại Việt Nam có thể tự tin đầu tư, tích lũy an toàn và bền vững từ những số vốn nhỏ nhất."
+                    "Sứ mệnh của chúng tôi là phụng sự người nghèo, hỗ trợ cộng đồng chưa có kiến thức chuyên sâu về tài chính tại Việt Nam có thể tự tin đầu tư, tích lĩy an toàn và bền vững từ những số vốn nhỏ nhất."
                 </b>
                 Đồng thời, nền tảng định hướng thiết lập lộ trình **giáo dục sớm cho trẻ em từ 15 tuổi**, giúp thế hệ tương lai hình thành tư duy quản trị tài sản, tính kỷ luật thép và làm chủ vận mệnh kinh tế bản thân.
             </p>
@@ -315,10 +320,15 @@ with col_f3:
 # ==========================================
 st.markdown("<br>### 🏛️ ACADEMY: HỆ THỐNG ĐÀO TẠO 35 CHIẾN LƯỢC ĐẦU TƯ KINH ĐIỂN", unsafe_allow_html=True)
 
-col_key1, col_key2 = st.columns([5, 5])
+# 🔄 BỐ CỤC NÚT BẤM VẬT LÝ CHO HỌC VIÊN ĐĂNG NHẬP
+col_key1, col_key2 = st.columns([6, 4])
 with col_key1:
-    user_license_key = st.text_input("🔑 NHÀ ĐẦU TƯ: Nhập mã kích hoạt (License Key) để mở khóa 20 chiến lược nâng cao:", type="password")
+    user_license_key = st.text_input("🔑 NHÀ ĐẦU TƯ: Nhập mã kích hoạt (License Key) để mở khóa 20 chiến lược nâng cao:", type="password", key="student_input")
+with col_key2:
+    st.markdown("<div style='margin-top:28px;'></div>", unsafe_allow_html=True)
+    btn_student_click = st.button("🔓 KÍCH HOẠT HỌC VIỆN VIP")
 
+# Xử lý biến kiểm tra điều kiện mở khóa bài học
 is_unlocked = (user_license_key == st.session_state["dynamic_license_key"]) or (user_license_key == "ADMINQUAN2026")
 
 strategies_35 = [
@@ -337,7 +347,7 @@ strategies_35 = [
     {"id": 13, "book": "Trên Đỉnh Phố Wall - Peter Lynch", "title": "Ma trận phân loại 6 nhóm cổ phiếu chiến lược", "desc": f"Xác định chính xác vị thế doanh nghiệp để đặt mục tiêu hiệu suất kỳ vọng phù hợp. Trạm Terminal chấm mã {tkA} sở hữu mức sinh lời hiệu quả ROE đạt {data_A['roe']:.1f}%."},
     {"id": 14, "book": "Beating the Street - Peter Lynch", "title": "Phương pháp Scuttlebutt điều tra thực địa vĩ mô", "desc": "Khai thác cơ hội đầu tư tăng trưởng bằng cách trực tiếp quan sát hành vi tiêu dùng và mở rộng chuỗi cửa hàng trong đời sống thực tế trước khi số liệu lên báo cáo báo chí."},
     {"id": 15, "book": "Inside Job - Khủng hoảng vĩ mô", "title": "Phòng vệ khủng hoảng thanh khoản hệ thống nợ", "desc": "Nhận diện các dấu hiệu căng thẳng tín dụng toàn cầu để nhanh chóng đưa tổng tài sản về trạng thái an toàn, ưu tiên tích trữ các cổ phiếu dịch vụ cốt lõi."},
-    {"id": 16, "book": "Peter Drucker - Quản trị thực hành", "title": "Kiểm toán hiệu năng bộ máy điều hành doanh nghiệp", "desc": "Thẩm định chất lượng ban lãnh đạo dựa trên năng lực tối ưu hóa nguồn nhân lực và tính minhạch trong việc thực hiện các cam kết kinh doanh dài hạn."},
+    {"id": 16, "book": "Peter Drucker - Quản trị thực hành", "title": "Kiểm toán hiệu năng bộ máy điều hành doanh nghiệp", "desc": "Thẩm định chất lượng ban lãnh đạo dựa trên năng lực tối ưu hóa nguồn nhân lực và tính minh bạch trong việc thực hiện các cam kết kinh doanh dài hạn."},
     {"id": 17, "book": "Michael Porter - Chiến lược cạnh tranh vĩ mô", "title": "Cấu hình 3 chiến lược dẫn dắt thị trường", "desc": "Đánh giá khả năng bứt phá của doanh nghiệp dựa trên một trong ba hướng đi quyết định: Khác biệt hóa sản phẩm, Dẫn đầu chi phí thấp, hoặc Tập trung phân khúc chuyên biệt."},
     {"id": 18, "book": "Philip Fisher - Cổ phiếu thường lợi nhuận phi thường", "title": "15 tiêu chí sàng lọc siêu cổ phiếu tăng trưởng đột biến", "desc": "Yêu cầu khắt khe về năng lực nghiên cứu phát triển sản phẩm mới (R&D) và mối quan hệ lao động nội bộ ban điều hành xuất sắc."},
     {"id": 19, "book": "Ray Dalio - Nguyên tắc (Principles)", "title": "Thiết lập danh mục bất đối xứng All-Weather Portfolio", "desc": "Xây dựng cấu trúc danh mục cân bằng, có khả năng tự động phòng vệ và tăng trưởng bền vững xuyên qua mọi chu kỳ lạm phát, giảm phát toàn cầu."},
@@ -348,7 +358,7 @@ strategies_35 = [
     {"id": 24, "book": "Gary Hamel - Cạnh tranh cho tương lai", "title": "Xác lập năng lực cốt lõi dẫn dắt cuộc chơi", "desc": "Doanh nghiệp xuất sắc bắt buộc phải sở hữu những kỹ năng công nghệ độc quyền khó có thể bị sao chép hay thế thế trong dài hạn."},
     {"id": 25, "book": "Richard Nixon - Biographies", "title": "Nghệ thuật địa chính trị và quản trị khủng hoảng thượng tầng", "desc": "Hiểu rõ các nước cờ vĩ mô thế giới tác động trực tiếp đến tỷ giá, chu kỳ dòng vốn liên quốc gia để đưa ra quyết định phòng thủ nguồn lực."},
     {"id": 26, "book": "Margaret Thatcher - Hồi ký thép", "title": "Tư duy tự do thị trường và tư nhân hóa hạ tầng", "desc": "Ưu tiên dòng vốn vào các doanh nghiệp tư nhân năng động, sở hữu cơ chế vận hành linh hoạt tối ưu hóa chi phí sản xuất thương mại sâu."},
-    {"id": 27, "book": "Tony Blair - Hành trình quyền lực", "title": "Chiến lược Con đường thứ ba và toàn cầu hóa dòng vốn", "desc": "Phân tích cấu trúc dòng vốn ngoại FDI dịch chuyển để đón đầu các mã hưởng lợi lớn từ chuỗi cung ứng logistics quốc tế."},
+    {"id": 27, "book": "Tony Blair - Hành trình quyền lực", "title": "Chistven Con đường thứ ba và toàn cầu hóa dòng vốn", "desc": "Phân tích cấu trúc dòng vốn ngoại FDI dịch chuyển để đón đầu các mã hưởng lợi lớn từ chuỗi cung ứng logistics quốc tế."},
     {"id": 28, "book": "Andrew Carnegie - Phúc âm của giàu sang", "title": "Triết lý phân bổ nguồn lực phụng sự xã hội", "desc": "Đỉnh cao của tư duy quản trị tài sản: Tích lũy nguồn lực bằng kỷ luật thép và phân bổ phụng sự cộng đồng kiến tạo giá trị vĩnh cửu."},
     {"id": 29, "book": "John C. Bogle - Sentido Común", "title": "Trục định vị giá trị thực của dòng cổ tức tiền mặt", "desc": "Cắt bỏ các kỳ vọng ảo tưởng về đồ thị ngắn hạn, tập trung tối đa vào sức mạnh nội tại tạo tiền mặt thực tế của doanh nghiệp."},
     {"id": 30, "book": "Citizen Ashe - Tinh thần kỷ luật", "title": "Sự kiên định chiến lược trước áp lực biến động thị trường", "desc": "Giữ vững bộ quy tắc danh mục, không bị lay chuyển bởi các thông tin nhiễu loạn từ Ngài Thị trường để chạm mốc tự do tài chính tối thượng."},
@@ -407,14 +417,21 @@ with col_contact:
 st.markdown("<br><br><br>", unsafe_allow_html=True)
 with st.expander("🛠️ TRẠM QUẢN TRỊ THƯỢNG TẦNG (CHỈ DÀNH RIÊNG CHO CEO TRẦN ANH QUÂN)"):
     st.markdown("<div class='admin-box'>", unsafe_allow_html=True)
-    admin_auth = st.text_input("Vui lòng nhập Mật mã Quản trị tối mật của bạn:", type="password")
+    
+    # 🔄 THIẾT KẾ KHỐI NÚT ĐĂNG NHẬP ADMIN TRỰC QUAN
+    col_adm1, col_adm2 = st.columns([6, 4])
+    with col_adm1:
+        admin_auth = st.text_input("Vui lòng nhập Mật mã Quản trị tối mật của bạn:", type="password", key="ceo_admin_pwd")
+    with col_adm2:
+        st.markdown("<div style='margin-top:28px;'></div>", unsafe_allow_html=True)
+        btn_admin_click = st.button("💾 XÁC NHẬN ĐĂNG NHẬP THƯỢNG TẦNG")
     
     if admin_auth == "ADMINQUAN2026":
         st.success("🎉 Xin chào Chủ tịch Trần Anh Quân! Hệ thống điều hành Pentech Premium đã mở.")
         st.markdown(f"• Mã kích hoạt hiện tại đang cấp cho khách hàng: **{st.session_state['dynamic_license_key']}**")
         
         new_key = st.text_input("Cài đặt Mật khẩu kích hoạt mới cho Gói 2 / Gói 3 tại đây:", value=st.session_state['dynamic_license_key'])
-        if st.button("💾 XÁC NHẬN LƯU MẬT KHẨU MỚI"):
+        if st.button("💾 LƯU THAY ĐỔI MẬT KHẨU"):
             st.session_state["dynamic_license_key"] = new_key
             st.success(f"🚀 Đã cập nhật thành công! Từ bây giờ khách hàng phải gõ '{new_key}' mới xem được đủ 35 bài học.")
     elif admin_auth != "":
