@@ -53,7 +53,7 @@ st.markdown("""
         margin-bottom: 35px;
     }
     .premium-title { color: #000000 !important; font-size: 32px; font-weight: 800; letter-spacing: -0.5px; }
-    .premium-subtitle { color: #000000 !important; font-size: 13px; font-700; text-transform: uppercase; letter-spacing: 1.5px; }
+    .premium-subtitle { color: #000000 !important; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; }
     
     .founder-card {
         background-color: #FFFFFF;
@@ -142,7 +142,6 @@ st.markdown("""
         font-weight: 600 !important;
     }
     
-    /* Thiết kế nút bấm hành động có viền nổi bật vững chắc */
     button {
         background-color: #000000 !important;
         color: #FFFFFF !important;
@@ -170,7 +169,7 @@ st.markdown("""
 st.markdown("""
     <div class="premium-header">
         <div class="premium-title">Pentech Premium <span style='font-size:16px; color:#000000; font-weight:600;'>INSTITUTIONAL TERMINAL</span></div>
-        <div class="premium-subtitle">Hạ tầng Real-time 3 sàn • Đã sửa lỗi phím Enter kẹt hệ thống</div>
+        <div class="premium-subtitle">Hạ tầng Real-time 3 sàn • Bản đồng bộ mật mã quản trị tối giản</div>
     </div>
 """, unsafe_allow_html=True)
 
@@ -209,7 +208,7 @@ with st.expander("💎 CHÚNG TÔI LÀ AI & SỨ MỆNH PHỤNG SỰ XA HỘI PE
                 <b>Pentech Premium</b> được vận hành dựa trên triết lý cốt lõi: Kiến tạo cơ hội tiếp cận tài chính công bằng. Chúng tôi loại bỏ toàn bộ các rào cản thuật ngữ phức tạp để mang đến một trạm tra cứu Terminal minh bạch nhất.
                 <br><br>
                 <b style='font-size:17px; color:#000000; display:block; border-left:4px solid #000000; padding-left:12px; font-style:italic; margin-bottom:10px;'>
-                    "Sứ mệnh của chúng tôi là phụng sự người nghèo, hỗ trợ cộng đồng chưa có kiến thức chuyên sâu về tài chính tại Việt Nam có thể tự tin đầu tư, tích lĩy an toàn và bền vững từ những số vốn nhỏ nhất."
+                    "Sứ mệnh của chúng tôi là phụng sự người nghèo, hỗ trợ cộng đồng chưa có kiến thức chuyên sâu về tài chính tại Việt Nam có thể tự tin đầu tư, tích lũy an toàn và bền vững từ những số vốn nhỏ nhất."
                 </b>
                 Đồng thời, nền tảng định hướng thiết lập lộ trình **giáo dục sớm cho trẻ em từ 15 tuổi**, giúp thế hệ tương lai hình thành tư duy quản trị tài sản, tính kỷ luật thép và làm chủ vận mệnh kinh tế bản thân.
             </p>
@@ -320,7 +319,6 @@ with col_f3:
 # ==========================================
 st.markdown("<br>### 🏛️ ACADEMY: HỆ THỐNG ĐÀO TẠO 35 CHIẾN LƯỢC ĐẦU TƯ KINH ĐIỂN", unsafe_allow_html=True)
 
-# 🔄 BỐ CỤC NÚT BẤM VẬT LÝ CHO HỌC VIÊN ĐĂNG NHẬP
 col_key1, col_key2 = st.columns([6, 4])
 with col_key1:
     user_license_key = st.text_input("🔑 NHÀ ĐẦU TƯ: Nhập mã kích hoạt (License Key) để mở khóa 20 chiến lược nâng cao:", type="password", key="student_input")
@@ -328,8 +326,8 @@ with col_key2:
     st.markdown("<div style='margin-top:28px;'></div>", unsafe_allow_html=True)
     btn_student_click = st.button("🔓 KÍCH HOẠT HỌC VIỆN VIP")
 
-# Xử lý biến kiểm tra điều kiện mở khóa bài học
-is_unlocked = (user_license_key == st.session_state["dynamic_license_key"]) or (user_license_key == "ADMINQUAN2026")
+# 🔥 ĐỒNG BỘ: Cấp quyền bẻ khóa nếu gõ đúng mã của Quân
+is_unlocked = (user_license_key == st.session_state["dynamic_license_key"])
 
 strategies_35 = [
     {"id": 1, "book": "Security Analysis - Graham", "title": "Xác lập trục giá trị nội tại cốt lõi", "desc": f"Bóc tách tài sản ròng tìm kiếm biên an toàn phòng thủ. Trục định giá kỹ thuật của {tkA} đang cách thị giá một biên bảo vệ an toàn giúp tài khoản vững chắc."},
@@ -358,7 +356,7 @@ strategies_35 = [
     {"id": 24, "book": "Gary Hamel - Cạnh tranh cho tương lai", "title": "Xác lập năng lực cốt lõi dẫn dắt cuộc chơi", "desc": "Doanh nghiệp xuất sắc bắt buộc phải sở hữu những kỹ năng công nghệ độc quyền khó có thể bị sao chép hay thế thế trong dài hạn."},
     {"id": 25, "book": "Richard Nixon - Biographies", "title": "Nghệ thuật địa chính trị và quản trị khủng hoảng thượng tầng", "desc": "Hiểu rõ các nước cờ vĩ mô thế giới tác động trực tiếp đến tỷ giá, chu kỳ dòng vốn liên quốc gia để đưa ra quyết định phòng thủ nguồn lực."},
     {"id": 26, "book": "Margaret Thatcher - Hồi ký thép", "title": "Tư duy tự do thị trường và tư nhân hóa hạ tầng", "desc": "Ưu tiên dòng vốn vào các doanh nghiệp tư nhân năng động, sở hữu cơ chế vận hành linh hoạt tối ưu hóa chi phí sản xuất thương mại sâu."},
-    {"id": 27, "book": "Tony Blair - Hành trình quyền lực", "title": "Chistven Con đường thứ ba và toàn cầu hóa dòng vốn", "desc": "Phân tích cấu trúc dòng vốn ngoại FDI dịch chuyển để đón đầu các mã hưởng lợi lớn từ chuỗi cung ứng logistics quốc tế."},
+    {"id": 27, "book": "Tony Blair - Hành trình quyền lực", "title": "Chiến lược Con đường thứ ba và toàn cầu hóa dòng vốn", "desc": "Phân tích cấu trúc dòng vốn ngoại FDI dịch chuyển để đón đầu các mã hưởng lợi lớn từ chuỗi cung ứng logistics quốc tế."},
     {"id": 28, "book": "Andrew Carnegie - Phúc âm của giàu sang", "title": "Triết lý phân bổ nguồn lực phụng sự xã hội", "desc": "Đỉnh cao của tư duy quản trị tài sản: Tích lũy nguồn lực bằng kỷ luật thép và phân bổ phụng sự cộng đồng kiến tạo giá trị vĩnh cửu."},
     {"id": 29, "book": "John C. Bogle - Sentido Común", "title": "Trục định vị giá trị thực của dòng cổ tức tiền mặt", "desc": "Cắt bỏ các kỳ vọng ảo tưởng về đồ thị ngắn hạn, tập trung tối đa vào sức mạnh nội tại tạo tiền mặt thực tế của doanh nghiệp."},
     {"id": 30, "book": "Citizen Ashe - Tinh thần kỷ luật", "title": "Sự kiên định chiến lược trước áp lực biến động thị trường", "desc": "Giữ vững bộ quy tắc danh mục, không bị lay chuyển bởi các thông tin nhiễu loạn từ Ngài Thị trường để chạm mốc tự do tài chính tối thượng."},
@@ -418,15 +416,16 @@ st.markdown("<br><br><br>", unsafe_allow_html=True)
 with st.expander("🛠️ TRẠM QUẢN TRỊ THƯỢNG TẦNG (CHỈ DÀNH RIÊNG CHO CEO TRẦN ANH QUÂN)"):
     st.markdown("<div class='admin-box'>", unsafe_allow_html=True)
     
-    # 🔄 THIẾT KẾ KHỐI NÚT ĐĂNG NHẬP ADMIN TRỰC QUAN
     col_adm1, col_adm2 = st.columns([6, 4])
     with col_adm1:
+        # 🔥 ĐỒNG BỘ: Đổi mật mã quản trị mặc định thành 'Trananhquan@2001'
         admin_auth = st.text_input("Vui lòng nhập Mật mã Quản trị tối mật của bạn:", type="password", key="ceo_admin_pwd")
     with col_adm2:
         st.markdown("<div style='margin-top:28px;'></div>", unsafe_allow_html=True)
         btn_admin_click = st.button("💾 XÁC NHẬN ĐĂNG NHẬP THƯỢNG TẦNG")
     
-    if admin_auth == "ADMINQUAN2026":
+    # 🔥 ĐỒNG BỘ ĐIỀU KIỆN: Kiểm tra chính xác cụm mật mã mới
+    if admin_auth == "Trananhquan@2001":
         st.success("🎉 Xin chào Chủ tịch Trần Anh Quân! Hệ thống điều hành Pentech Premium đã mở.")
         st.markdown(f"• Mã kích hoạt hiện tại đang cấp cho khách hàng: **{st.session_state['dynamic_license_key']}**")
         
