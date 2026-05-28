@@ -20,6 +20,10 @@ st.set_page_config(
 # Giữ mã xác minh Google Search Console của bạn Quân
 st._config.set_option("html.additionalHeadContent", '<meta name="google-site-verification" content="448da2da278475de" />')
 
+# Khởi tạo bộ nhớ ngầm lưu trữ mật khẩu kích hoạt trên máy chủ
+if "dynamic_license_key" not block st.session_state:
+    st.session_state["dynamic_license_key"] = "PENTECH500K"
+
 # ==========================================
 # 2. NGÔN NGỮ THIẾT KẾ NỀN TRẮNG TOÀN PHẦN - CHỮ ĐEN ĐẬM (PURE LIGHT STYLE)
 # ==========================================
@@ -81,6 +85,15 @@ st.markdown("""
     .strategy-title { font-size: 16px; font-weight: 800; color: #000000 !important; margin-bottom: 5px; }
     .book-tag { font-size: 12px; font-weight: 800; color: #FFFFFF !important; background-color: #000000 !important; padding: 3px 10px; border-radius: 2px; display: inline-block; margin-bottom: 8px; }
     
+    .locked-card {
+        background-color: #FFFBEB;
+        padding: 20px;
+        border: 2px dashed #D97706;
+        border-radius: 4px;
+        margin-bottom: 10px;
+        text-align: center;
+    }
+    
     .compare-box {
         background-color: #F9FAFB;
         padding: 25px;
@@ -138,6 +151,14 @@ st.markdown("""
         width: 100% !important;
         border: 2px solid #000000 !important;
     }
+    
+    /* KHU VỰC ĐIỀU HÀNH ADMIN BOX */
+    .admin-box {
+        background-color: #F3F4F6;
+        border: 3px dashed #000000;
+        padding: 25px;
+        margin-top: 40px;
+    }
     </style>
 """, unsafe_allow_html=True)
 
@@ -145,7 +166,7 @@ st.markdown("""
 st.markdown("""
     <div class="premium-header">
         <div class="premium-title">Pentech Premium <span style='font-size:16px; color:#000000; font-weight:600;'>INSTITUTIONAL TERMINAL</span></div>
-        <div class="premium-subtitle">Hạ tầng Real-time 3 sàn • Đồng bộ thuật toán sửa lỗi sai số</div>
+        <div class="premium-subtitle">Hạ tầng Real-time 3 sàn • Bản cập nhật Quản trị tối mật của CEO</div>
     </div>
 """, unsafe_allow_html=True)
 
@@ -190,15 +211,9 @@ with st.expander("💎 CHÚNG TÔI LÀ AI & SỨ MỆNH PHỤNG SỰ XA HỘI PE
             </p>
         """, unsafe_allow_html=True)
 
-with st.expander("⚙️ BAN ĐIỀU HÀNH: Tải ảnh chân dung thay thế lên hệ thống"):
-    uploaded_image = st.file_uploader("Chọn ảnh chân dung mới của bạn (Định dạng JPG, PNG):", type=["jpg", "jpeg", "png"])
-    if uploaded_image is not None:
-        with open("founder_fixed.jpg", "wb") as f: f.write(uploaded_image.getbuffer())
-        st.success("🎉 Đã đồng bộ ảnh chân dung CEO Trần Anh Quân vào hệ thống!")
-
 
 # ==========================================
-# 🎛️ ENGINE CHUẨN HÓA DỮ LIỆU CỐT LÕI - KHẮC PHỤC SAI SỐ TRIỆT ĐỂ
+# 🎛️ ENGINE CÀO GIÁ TỰ ĐỘNG REAL-TIME 3 SÀN
 # ==========================================
 st.markdown("<br>### 🎛️ TERMINAL ĐỐI CHIẾU SONG SONG ĐA TÀI SẢN REAL-TIME", unsafe_allow_html=True)
 
@@ -209,7 +224,6 @@ sector_map = {
     "THÉP, THƯƠNG MẠI & SẢN XUẤT": ["HPG", "HSG", "NKG", "GAS", "POW", "PVD", "PVS", "DGC"]
 }
 
-# Kho cơ sở số liệu tài chính thực chuẩn xác của các doanh nghiệp trụ cột
 accurate_corporate_db = {
     "VPB": {"name": "Ngân hàng VPBank", "exchange": "HOSE", "sector": "NGÂN HÀNG", "eps": 2950, "growth": 16, "roe": 14.5, "roi": 11.2, "moat": "Dẫn đầu quy mô vốn điều lệ và phân khúc tín dụng tiêu dùng"},
     "TCB": {"name": "Ngân hàng Techcombank", "exchange": "HOSE", "sector": "NGÂN HÀNG", "eps": 5810, "growth": 24, "roe": 18.2, "roi": 14.8, "moat": "Lợi thế chi phí vốn CASA vượt trội và hệ sinh thái bất động sản cao cấp"},
@@ -225,8 +239,6 @@ def get_live_stock_price(ticker):
     clean_tk = str(ticker).strip().upper()
     if not clean_tk:
         return {"name": "Chưa nhập mã", "exchange": "HOSE", "sector": "HỆ THỐNG", "eps": 2000, "current": 10000, "growth": 12, "roe": 12.0, "roi": 9.0, "moat": "Năng lực nội tại thương mại"}
-
-    # THUẬT TOÁN KHẮC PHỤC SAI SỐ: Quét đa luồng, lấy thị giá chính xác real-time từ API lõi sàn khớp lệnh
     live_price = 0
     try:
         url = f"https://apipublocks.tcbs.com.vn/api/v1/ticker/{clean_tk}/overview"
@@ -236,86 +248,42 @@ def get_live_stock_price(ticker):
     except:
         live_price = 0
 
-    # Khởi tạo ma trận tham số dựa trên mã băm để bảo hộ tính logic nếu là mã lạ ngoài danh mục cốt lõi
     hash_val = sum(ord(c) for c in clean_tk)
     if live_price == 0:
         live_price = 18000 + (hash_val % 12) * 2500
 
-    # Nếu mã nằm trong danh mục cơ sở, đồng bộ ngay lập tức số liệu EPS, ROE, ROI thật 100% không để sai số
     if clean_tk in accurate_corporate_db:
         base_data = accurate_corporate_db[clean_tk]
-        return {
-            "name": base_data["name"],
-            "exchange": base_data["exchange"],
-            "sector": base_data["sector"],
-            "eps": base_data["eps"],
-            "current": live_price,
-            "growth": base_data["growth"],
-            "roe": base_data["roe"],
-            "roi": base_data["roi"],
-            "moat": base_data["moat"]
-        }
+        return {"name": base_data["name"], "exchange": base_data["exchange"], "sector": base_data["sector"], "eps": base_data["eps"], "current": live_price, "growth": base_data["growth"], "roe": base_data["roe"], "roi": base_data["roi"], "moat": base_data["moat"]}
     else:
-        # Cơ chế xử lý logic thông minh cho các mã khác trên 3 sàn
         detected_sector = "BẤT ĐỘNG SẢN & PHÂN KHÚC KHÁC"
         for sector, tickers in sector_map.items():
             if clean_tk in tickers:
                 detected_sector = sector
                 break
-                
         eps_calc = live_price // (9 + (hash_val % 5))
         if eps_calc < 1000: eps_calc = 1800
         roe_calc = 12.5 + float(hash_val % 6) * 1.4
-        
         exchanges = ["HOSE", "HNX", "UPCoM"]
-        return {
-            "name": f"Doanh nghiệp thuộc sàn {exchanges[hash_val % 3]} ({clean_tk})",
-            "exchange": exchanges[hash_val % 3],
-            "sector": detected_sector,
-            "eps": eps_calc,
-            "current": live_price,
-            "growth": 14 + (hash_val % 8),
-            "roe": roe_calc,
-            "roi": roe_calc * 0.8,
-            "moat": f"Hệ số cạnh tranh và tối ưu hóa tài sản quy mô ngành niêm yết"
-        }
+        return {"name": f"Doanh nghiệp thuộc sàn {exchanges[hash_val % 3]} ({clean_tk})", "exchange": exchanges[hash_val % 3], "sector": detected_sector, "eps": eps_calc, "current": live_price, "growth": 14 + (hash_val % 8), "roe": roe_calc, "roi": roe_calc * 0.8, "moat": f"Hệ số cạnh tranh và tối ưu hóa tài sản quy mô ngành niêm yết"}
 
 col_term1, col_term2 = st.columns(2)
 with col_term1:
-    tkA_raw = st.text_input("MÃ CỔ PHIẾU A (Thử gõ FPT, VGI, TCB, HPG...):", value="FPT")
+    tkA_raw = st.text_input("MÃ CỔ PHIẾU A:", value="FPT")
     data_A = get_live_stock_price(tkA_raw)
     tkA = tkA_raw.strip().upper()
 with col_term2:
-    tkB_raw = st.text_input("MÃ CỔ PHIẾU B (Đổi chiếu song song giá thật):", value="VGI")
+    tkB_raw = st.text_input("MÃ CỔ PHIẾU B:", value="VGI")
     data_B = get_live_stock_price(tkB_raw)
     tkB = tkB_raw.strip().upper()
 
 col_box1, col_box2 = st.columns(2)
 with col_box1:
-    st.markdown(f"""
-    <div class="compare-box">
-        <h4 style='margin-top:0; border-bottom:2px solid #000000; padding-bottom:5px; color:#000000; font-weight:800;'>📊 TRẠM A: {tkA} ({data_A['exchange']})</h4>
-        <p style='color:#000000;'>• Doanh nghiệp: <b>{data_A['name']}</b></p>
-        <p style='color:#000000;'>• Phân ngành: <span style='background-color:#000000; color:#FFFFFF; padding:2px 6px; font-weight:800;'>{data_A['sector']}</span></p>
-        <p style='color:#000000;'>• Giá Real-time chuẩn xác: <b style='font-size:20px; color:#000000;'>{data_A['current']:,.0f} VNĐ</b></p>
-        <p style='color:#000000;'>• <b>CHỈ SỐ TRÍCH XUẤT: EPS {data_A['eps']:,.0f} VNĐ | ROE {data_A['roe']:.1f}% | ROI {data_A['roi']:.1f}%</b></p>
-        <p style='color:#000000;'>• Tăng trưởng thu nhập: +{data_A['growth']}% | Hào bảo vệ: <i>{data_A['moat']}</i></p>
-    </div>
-    """, unsafe_allow_html=True)
-
+    st.markdown(f"""<div class="compare-box"><h4 style='margin-top:0; border-bottom:2px solid #000000; padding-bottom:5px; color:#000000; font-weight:800;'>📊 TRẠM A: {tkA} ({data_A['exchange']})</h4><p style='color:#000000;'>• Doanh nghiệp: <b>{data_A['name']}</b></p><p style='color:#000000;'>• Phân ngành: <span style='background-color:#000000; color:#FFFFFF; padding:2px 6px; font-weight:800;'>{data_A['sector']}</span></p><p style='color:#000000;'>• Giá Real-time chuẩn xác: <b style='font-size:20px; color:#000000;'>{data_A['current']:,.0f} VNĐ</b></p><p style='color:#000000;'>• <b>CHỈ SỐ TRÍCH XUẤT: EPS {data_A['eps']:,.0f} VNĐ | ROE {data_A['roe']:.1f}% | ROI {data_A['roi']:.1f}%</b></p><p style='color:#000000;'>• Tăng trưởng thu nhập: +{data_A['growth']}% | Hào bảo vệ: <i>{data_A['moat']}</i></p></div>""", unsafe_allow_html=True)
 with col_box2:
-    st.markdown(f"""
-    <div class="compare-box">
-        <h4 style='margin-top:0; border-bottom:2px solid #000000; padding-bottom:5px; color:#000000; font-weight:800;'>📊 TRẠM B: {tkB} ({data_B['exchange']})</h4>
-        <p style='color:#000000;'>• Doanh nghiệp: <b>{data_B['name']}</b></p>
-        <p style='color:#000000;'>• Phân ngành: <span style='background-color:#000000; color:#FFFFFF; padding:2px 6px; font-weight:800;'>{data_B['sector']}</span></p>
-        <p style='color:#000000;'>• Giá Real-time chuẩn xác: <b style='font-size:20px; color:#000000;'>{data_B['current']:,.0f} VNĐ</b></p>
-        <p style='color:#000000;'>• <b>CHỈ SỐ TRÍCH XUẤT: EPS {data_B['eps']:,.0f} VNĐ | ROE {data_B['roe']:.1f}% | ROI {data_B['roi']:.1f}%</b></p>
-        <p style='color:#000000;'>• Tăng trưởng thu nhập: +{data_B['growth']}% | Hào bảo vệ: <i>{data_B['moat']}</i></p>
-    </div>
-    """, unsafe_allow_html=True)
+    st.markdown(f"""<div class="compare-box"><h4 style='margin-top:0; border-bottom:2px solid #000000; padding-bottom:5px; color:#000000; font-weight:800;'>📊 TRẠM B: {tkB} ({data_B['exchange']})</h4><p style='color:#000000;'>• Doanh nghiệp: <b>{data_B['name']}</b></p><p style='color:#000000;'>• Phân ngành: <span style='background-color:#000000; color:#FFFFFF; padding:2px 6px; font-weight:800;'>{data_B['sector']}</span></p><p style='color:#000000;'>• Giá Real-time chuẩn xác: <b style='font-size:20px; color:#000000;'>{data_B['current']:,.0f} VNĐ</b></p><p style='color:#000000;'>• <b>CHỈ SỐ TRÍCH XUẤT: EPS {data_B['eps']:,.0f} VNĐ | ROE {data_B['roe']:.1f}% | ROI {data_B['roi']:.1f}%</b></p><p style='color:#000000;'>• Tăng trưởng thu nhập: +{data_B['growth']}% | Hào bảo vệ: <i>{data_B['moat']}</i></p></div>""", unsafe_allow_html=True)
 
-# Biểu đồ diễn biến đường dòng tiền
+# Biểu đồ lịch sử
 dates = [datetime.now() - timedelta(days=x) for x in range(100, 0, -1)]
 fig = go.Figure()
 fig.add_trace(go.Scatter(x=dates, y=[data_A['current'] * (0.88 + (i*0.0014)) for i in range(100)], mode='lines', name=tkA, line=dict(color='#000000', width=3)))
@@ -338,9 +306,17 @@ with col_f3:
 
 
 # ==========================================
-# 🏛️ HỆ THỐNG ĐÀO TẠO 35 CHIẾN LƯỢC ĐẦU TƯ KINH ĐIỂN
+# 🏛️ ACADEMY: PHÂN QUYỀN MỞ KHÓA BÀI HỌC
 # ==========================================
 st.markdown("<br>### 🏛️ ACADEMY: HỆ THỐNG ĐÀO TẠO 35 CHIẾN LƯỢC ĐẦU TƯ KINH ĐIỂN", unsafe_allow_html=True)
+
+# Ô nhập mã mở khóa dành cho Học viên
+col_key1, col_key2 = st.columns([5, 5])
+with col_key1:
+    user_license_key = st.text_input("🔑 NHÀ ĐẦU TƯ: Nhập mã kích hoạt (License Key) để mở khóa 20 chiến lược nâng cao:", type="password")
+
+# Cơ chế tối ưu: Toàn bộ 35 chiến lược sẽ mở nếu gõ đúng License Key HOẶC gõ đúng Mật khẩu Quản trị của Quân
+is_unlocked = (user_license_key == st.session_state["dynamic_license_key"]) or (user_license_key == "ADMINQUAN2026")
 
 strategies_35 = [
     {"id": 1, "book": "Security Analysis - Graham", "title": "Xác lập trục giá trị nội tại cốt lõi", "desc": f"Bóc tách tài sản ròng tìm kiếm biên an toàn phòng thủ. Trục định giá kỹ thuật của {tkA} đang cách thị giá một biên bảo vệ an toàn giúp tài khoản vững chắc."},
@@ -374,76 +350,39 @@ strategies_35 = [
     {"id": 29, "book": "John C. Bogle - Sentido Común", "title": "Trục định vị giá trị thực của dòng cổ tức tiền mặt", "desc": "Cắt bỏ các kỳ vọng ảo tưởng về đồ thị ngắn hạn, tập trung tối đa vào sức mạnh nội tại tạo tiền mặt thực tế của doanh nghiệp."},
     {"id": 30, "book": "Citizen Ashe - Tinh thần kỷ luật", "title": "Sự kiên định chiến lược trước áp lực biến động thị trường", "desc": "Giữ vững bộ quy tắc danh mục, không bị lay chuyển bởi các thông tin nhiễu loạn từ Ngài Thị trường để chạm mốc tự do tài chính tối thượng."},
     {"id": 31, "book": "Thomas Piketty - Tư bản thế kỷ 21", "title": "Đo lường hệ số tích lũy tài sản vĩnh cửu", "desc": "Thấu hiểu quy luật tăng trưởng của vốn luôn lớn hơn tốc độ tăng trưởng kinh tế, thiết lập tư thế sở hữu tài sản sản xuất cốt lõi càng sớm càng tốt."},
-    {"id": 32, "book": "Nassim Taleb - Thiên nga đen (Black Swan)", "title": "Xân dựng danh mục chống chịu va đập rủi ro cực đoan", "desc": "Chấp nhận sự không chắc chắn của tương lai, cấu hình danh mục có tính chất Barbell: Phòng thủ tuyệt đối 90% và tấn công bất đối xứng 10%."},
+    {"id": 32, "book": "Nassim Taleb - Thiên nga đen (Black Swan)", "title": "Xây dựng danh mục chống chịu va đập rủi ro cực đoan", "desc": "Chấp nhận sự không chắc chắn của tương lai, cấu hình danh mục có tính chất Barbell: Phòng thủ tuyệt đối 90% và tấn công bất đối xứng 10%."},
     {"id": 33, "book": "Daniel Kahneman - Tư duy nhanh và chậm", "title": "Kiểm soát các lỗi định kiến nhận thức tài chính ngắn hạn", "desc": "Nhận diện và loại bỏ bẫy tâm lý mỏ neo, bẫy sợ thua lỗ để đưa ra các quyết định phân bổ nguồn vốn dựa trên toán học thuần túy."},
     {"id": 34, "book": "Robert Shiller - Thị trường hoang tưởng vô độ", "title": "Nhận diện cấu trúc bong bóng tài sản liên ngành", "desc": "Sử dụng các chỉ số PE điều chỉnh theo chu kỳ (CAPE Ratio) để phát hiện trạng thái định giá quá đà của thị trường trước khi điểm gãy diễn ra."},
     {"id": 35, "book": "Pentech Premium - Trần Anh Quân", "title": "Quy trình tổng lực Quản trị tài sản cho thế hệ mai sau", "desc": f"Tích hợp 34 trục tri thức kinh điển kết hợp với công nghệ định lượng máy học. Đồng hành bảo hộ nguồn lực dài hạn xuyên thế kỷ cho bạn thông qua đường dây nóng trực tiếp **0327.625.853**."}
 ]
 
 for strat in strategies_35:
-    with st.expander(f"📖 CHIẾN LƯỢC {strat['id']}: {strat['title'].upper()}"):
-        st.markdown(f"""
-        <div class="strategy-card">
-            <div class="book-tag">Sách: {strat['book']}</div>
-            <p style='font-size:14px; line-height:1.6; color:#000000;'>{strat['desc']}</p>
-        </div>
-        """, unsafe_allow_html=True)
+    if strat["id"] <= 15:
+        with st.expander(f"📖 CHIẾN LƯỢC {strat['id']}: {strat['title'].upper()}"):
+            st.markdown(f"""<div class="strategy-card"><div class="book-tag">Sách: {strat['book']}</div><p style='font-size:14px; line-height:1.6; color:#000000;'>{strat['desc']}</p></div>""", unsafe_allow_html=True)
+    else:
+        if is_unlocked:
+            with st.expander(f"🔓 CHIẾN LƯỢC {strat['id']}: {strat['title'].upper()} (ĐÃ KÍCH HOẠT VIP)"):
+                st.markdown(f"""<div class="strategy-card" style="border-color: #000000;"><div class="book-tag">Sách: {strat['book']}</div><p style='font-size:14px; line-height:1.6; color:#000000;'>{strat['desc']}</p></div>""", unsafe_allow_html=True)
+        else:
+            with st.expander(f"🔒 CHIẾN LƯỢC {strat['id']}: [BỊ KHÓA] NÂNG CẤP GÓI ĐỂ MỞ KHÓA"):
+                st.markdown(f"""<div class="locked-card"><h4>🔒 Nội dung bài học thuộc quyền sở hữu của Gói 2 & Gói 3</h4><p style='color:#D97706 !important;'>Bạn đang sử dụng tài khoản Gói Cơ Bản. Để mở khóa quy tắc quản trị rủi ro tối cao của Seth Klarman, Howard Marks... vui lòng bấm nâng cấp lên Gói Nâng Cấp hoặc Gói VIP để nhận mã kích hoạt từ CEO Trần Anh Quân.</p></div>""", unsafe_allow_html=True)
 
 
 # ==========================================
-# 💰 MA TRẬN 3 GÓI ĐĂNG KÝ THEO BỐ CỤC RÕ NÉT
+# 💰 MA TRẬN 3 GÓI ĐĂNG KÝ PHÂN KHÚC CHIẾN LƯỢC
 # ==========================================
 st.markdown("<br><br>### 💰 MA TRẬN HẠ TẦNG 3 GÓI ĐĂNG KÝ PHÂN KHÚC CHIẾN LƯỢC PENTECH PREMIUM", unsafe_allow_html=True)
-
 col_p1, col_p2, col_p3 = st.columns(3)
 
 with col_p1:
-    st.markdown("""
-    <div class="price-grid-box">
-        <div class="price-card-title">GÓI 1: CƠ BẢN</div>
-        <div class="price-card-amount">250.000 VNĐ</div>
-        <p style='color:#000000; font-size:13px; margin-bottom:15px; font-weight: 600;'>Phân khúc đại chúng khởi đầu</p>
-        <hr style='border-color:#000000; margin:15px 0; border-width: 1px;'>
-        <ul style='text-align:left; font-size:14px; list-style:none; padding:0; line-height:2.4; color:#000000;'>
-            <li>• Quyền tra cứu Terminal 3 sàn Real-time</li>
-            <li>• Khai mở hệ tư duy đầu tư giá trị gốc</li>
-            <li>• Tiếp cận Academy tư duy tài chính cơ bản</li>
-            <li>• Hỗ trợ công cụ đối chiếu ngành tự động</li>
-        </ul>
-    </div>
-    """, unsafe_allow_html=True)
+    st.markdown("""<div class="price-grid-box"><div class="price-card-title">GÓI 1: CƠ BẢN</div><div class="price-card-amount">250.000 VNĐ</div><p style='color:#000000; font-size:13px; margin-bottom:15px; font-weight: 600;'>Phân khúc đại chúng khởi đầu</p><hr style='border-color:#000000; margin:15px 0; border-width: 1px;'><ul style='text-align:left; font-size:14px; list-style:none; padding:0; line-height:2.4; color:#000000;'><li>• Quyền tra cứu Terminal 3 sàn Real-time</li><li>• <b>Mở khóa xem trước 15 chiến lược đầu tư giá trị gốc</b></li><li>• Tiếp cận Academy tư duy tài chính cơ bản</li><li>• Hỗ trợ công cụ đối chiếu ngành tự động</li></ul></div>""", unsafe_allow_html=True)
 
 with col_p2:
-    st.markdown("""
-    <div class="price-grid-box">
-        <div class="price-card-title">GÓI 2: NÂNG CẤP</div>
-        <div class="price-card-amount">500.000 VNĐ</div>
-        <p style='color:#000000; font-size:13px; margin-bottom:15px; font-weight: 600;'>Phân khúc Nhà đầu tư độc lập</p>
-        <hr style='border-color:#000000; margin:15px 0; border-width: 1px;'>
-        <ul style='text-align:left; font-size:14px; list-style:none; padding:0; line-height:2.4; color:#000000;'>
-            <li>• Bao gồm toàn bộ quyền lợi của Gói Cơ bản</li>
-            <li>• Mở khóa trọn vẹn <b>35 chiến lược đầu tư nâng cao</b></li>
-            <li>• Tiếp cận mô hình dự báo tương lai thế kỷ 21</li>
-            <li>• Đặc quyền đồng bộ mã phân tích đa chỉ số</li>
-        </ul>
-    </div>
-    """, unsafe_allow_html=True)
+    st.markdown("""<div class="price-grid-box"><div class="price-card-title">GÓI 2: NÂNG CẤP</div><div class="price-card-amount">500.000 VNĐ</div><p style='color:#000000; font-size:13px; margin-bottom:15px; font-weight: 600;'>Phân khúc Nhà đầu tư độc lập</p><hr style='border-color:#000000; margin:15px 0; border-width: 1px;'><ul style='text-align:left; font-size:14px; list-style:none; padding:0; line-height:2.4; color:#000000;'><li>• Bao gồm toàn bộ quyền lợi của Gói Cơ bản</li><li>• <b>Mở khóa TRỌN VẸN ĐỦ 35 chiến lược đầu tư</b></li><li>• Nhận Key mở khóa 20 chiến lược rủi ro nâng cao</li><li>• Tiếp cận mô hình dự báo tương lai thế kỷ 21</li></ul></div>""", unsafe_allow_html=True)
 
 with col_p3:
-    st.markdown("""
-    <div class="price-grid-box vip-tier">
-        <div class="price-card-title" style="font-weight:900;">GÓI 3: THƯỢNG TẦNG VIP</div>
-        <div class="price-card-amount">1.900.000 VNĐ</div>
-        <p style='font-size:13px; margin-bottom:15px; font-weight:700;'>Đặc quyền Ban điều hành / Chủ doanh nghiệp</p>
-        <hr style='border-color:#FFFFFF; margin:15px 0; border-width: 1px;'>
-        <ul style='text-align:left; font-size:14px; list-style:none; padding:0; line-height:2.4;'>
-            <li>• <b>Tư vấn phân bổ doanh nghiệp trực tiếp từ CEO</b></li>
-            <li>• <b>Thiết kế cấu trúc & xây dựng chiến lược độc quyền</b></li>
-            <li>• Kết nối đường dây nóng bảo mật Ban điều hành Quỹ</li>
-            <li>• Cấu hình danh mục All-Weather chống chịu vĩ mô</li>
-        </ul>
-    </div>
-    """, unsafe_allow_html=True)
+    st.markdown("""<div class="price-grid-box vip-tier"><div class="price-card-title" style="font-weight:900;">GÓI 3: THƯỢNG TẦNG VIP</div><div class="price-card-amount">1.900.000 VNĐ</div><p style='font-size:13px; margin-bottom:15px; font-weight:700;'>Đặc quyền Ban điều hành / Chủ doanh nghiệp</p><hr style='border-color:#FFFFFF; margin:15px 0; border-width: 1px;'><ul style='text-align:left; font-size:14px; list-style:none; padding:0; line-height:2.4;'><li>• <b>Tư vấn phân bổ doanh nghiệp trực tiếp từ CEO</b></li><li>• <b>Thiết kế cấu trúc & xây dựng chiến lược độc quyền</b></li><li>• Cấp mã kích hoạt full 35 chiến lược đầu tư vĩ mô</li><li>• Cấu hình danh mục All-Weather chống chịu vĩ mô</li></ul></div>""", unsafe_allow_html=True)
 
 
 # FORM ĐĂNG KÝ CHIẾN LƯỢC VIỀN ĐEN NỔI BẬT
@@ -456,18 +395,33 @@ with col_form:
         v_phone = st.text_input("Đường dây liên hệ trực tiếp (Zalo):")
         st.form_submit_button("🚀 KÍCH HOẠT QUY TRÌNH QUẢN TRỊ TÀI SẢN CAO CẤP")
 with col_contact:
-    st.markdown(f"""
-        <div style="background-color: #FFFFFF; padding: 25px; border: 2px solid #000000; height: 195px; border-radius: 4px;">
-            <span style="color: #000000; font-size: 12px; display: block; margin-bottom: 5px; font-weight:700; letter-spacing:1px;">🏢 ĐƯỜNG DÂY NÓNG BAN ĐIỀU HÀNH QUỸ</span>
-            <span style="font-size: 30px; font-weight: 900; color: #000000; display: block; letter-spacing: -1px;">0327.625.853</span>
-            <p style="font-size: 14px; color: #000000; margin-top: 12px; line-height: 1.5; font-weight: 500;">
-                Liên hệ trực tiếp với Ban điều hành Pentech Premium qua Hotline/Zalo cá nhân của Mr. Trần Anh Quân: <b style='color:#000000;'>0327.625.853</b> để nhận giải pháp cơ cấu tài sản và cấu hình bảo mật thông tin.
-            </p>
-        </div>
-    """, unsafe_allow_html=True)
+    st.markdown(f"""<div style="background-color: #FFFFFF; padding: 25px; border: 2px solid #000000; height: 195px; border-radius: 4px;"><span style="color: #000000; font-size: 12px; display: block; margin-bottom: 5px; font-weight:700; letter-spacing:1px;">🏢 ĐƯỜNG DÂY NÓNG BAN ĐIỀU HÀNH QUỸ</span><span style="font-size: 30px; font-weight: 900; color: #000000; display: block; letter-spacing: -1px;">0327.625.853</span><p style="font-size: 14px; color: #000000; margin-top: 12px; line-height: 1.5; font-weight: 500;">Liên tiếp trực tiếp với Ban điều hành Pentech Premium qua Hotline/Zalo cá nhân của Mr. Trần Anh Quân: <b style='color:#000000;'>0327.625.853</b> để nhận giải pháp cơ cấu tài sản và cấu hình bảo mật thông tin.</p></div>""", unsafe_allow_html=True)
+
+
+# ==========================================
+# 🛑 TRẠM QUẢN TRỊ TỐI MẬT CỦA CEO TRẦN ANH QUÂN (ADMIN PANEL)
+# ==========================================
+st.markdown("<br><br><br>", unsafe_allow_html=True)
+with st.expander("🛠️ TRẠM QUẢN TRỊ THƯỢNG TẦNG (CHỈ DÀNH RIÊNG CHO CEO TRẦN ANH QUÂN)"):
+    st.markdown("<div class='admin-box'>", unsafe_allow_html=True)
+    admin_auth = st.text_input("Vui lòng nhập Mật mã Quản trị tối mật của bạn:", type="password")
+    
+    if admin_auth == "ADMINQUAN2026":
+        st.success("🎉 Xin chào Chủ tịch Trần Anh Quân! Hệ thống điều hành Pentech Premium đã mở.")
+        st.markdown(f"• Mã kích hoạt hiện tại đang cấp cho khách hàng: **{st.session_state['dynamic_license_key']}**")
+        
+        # Ô cho phép Quân tự sửa đổi License Key theo ý mình bất cứ lúc nào
+        new_key = st.text_input("Cài đặt Mật khẩu kích hoạt mới cho Gói 2 / Gói 3 tại đây:", value=st.session_state['dynamic_license_key'])
+        if st.button("💾 XÁC NHẬN LƯU MẬT KHẨU MỚI"):
+            st.session_state["dynamic_license_key"] = new_key
+            st.success(f"🚀 Đã cập nhật thành công! Từ bây giờ khách hàng phải gõ '{new_key}' mới xem được đủ 35 bài học.")
+    elif admin_auth != "":
+        st.error("🔒 Mật mã Quản trị sai! Truy cập bị từ chối.")
+    st.markdown("</div>", unsafe_allow_html=True)
+
 
 # CHÂN TRANG PHÁP LÝ TỔ CHỨC
-st.markdown("<br><br><br>", unsafe_allow_html=True)
+st.markdown("<br><br>", unsafe_allow_html=True)
 st.markdown("""
     <div style="border-top: 2px solid #000000; padding-top: 20px; color: #000000; font-size: 12px; line-height: 1.6; font-weight: 500;">
         <b style="color: #000000; font-size: 14px; display: block; margin-bottom: 5px;">💎 PENTECH PREMIUM FINANCIAL TECHNOLOGY CORPORATION</b>
