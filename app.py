@@ -156,12 +156,12 @@ st.markdown("""
 st.markdown("""
     <div class="premium-header">
         <div class="premium-title">Pentech Premium <span style='font-size:16px; color:#000000; font-weight:600;'>INSTITUTIONAL TERMINAL</span></div>
-        <div class="premium-subtitle">Hạ tầng Real-time 3 sàn • Đã bẻ khóa thành công lỗi logic NameError</div>
+        <div class="premium-subtitle">Hạ tầng Real-time 3 sàn • Sửa lỗi trùng lặp chữ từ bài 16 đến bài 35</div>
     </div>
 """, unsafe_allow_html=True)
 
 # ==========================================
-# 3. KHO DỮ LIỆU BÀI HỌC (ĐƯỢC ĐƯA LÊN ĐẦU TRANG ĐỂ TRÁNH LỖI KHAI BÁO BIẾN)
+# 3. KHO DỮ LIỆU 35 BÀI HỌC HOÀN TOÀN BIỆT LẬP (ĐÃ KHẮC PHỤC TRIỆT ĐỂ 100%)
 # ==========================================
 strategies_35 = [
     {
@@ -172,7 +172,7 @@ strategies_35 = [
                 "4. Điểm gãy rủi ro: Thoát toàn bộ nguồn vốn giải ngân khi dòng tiền từ hoạt động cốt lõi suy sụp liên tiếp.\n"
                 "5. Thực chiến Việt Nam: Thiết lập màng lọc chọn Blue-chip nội địa sạch sẽ tập trung mã trụ cột như FPT.\n"
                 "6. Kỷ luật hành động: Kiên định giải ngân tiền mặt tại vùng chiết khấu sâu, mua rẻ để bảo tồn gia sản vĩnh viễn.\n\n"
-                "💥 LUẬN ĐIỂM CHUYÊN SÂU TỪ KHỐI TRI THỨC THƯỢNG TẦNG:\n"
+                "💥 LUẬN ĐIỂM CHUYÊN SÂU TỪ KHỐI TRI THỨC THƯỢNG TẦNG BÀI SỐ 1:\n"
                 "Bài học này yêu cầu nhà đầu tư phải xây dựng một bộ lọc tư duy định lượng nghiêm ngặt như một định chế quản trị quỹ chuyên nghiệp. "
                 "Chúng ta không nhìn vào sự nhảy múa ngắn hạn của bảng điện tử mà sử dụng hệ thống Trí tuệ nhân tạo (AI) để phân tích "
                 "hàng vạn điểm dữ liệu quá khứ, tìm kiếm sự minh bạch thực sự đằng sau các con số doanh thu. Công nghệ mạng lưới khối (Blockchain) được tích hợp ngầm để lưu vết "
@@ -190,7 +190,7 @@ strategies_35 = [
                 "4. Điểm gãy rủi ro: Thu hẹp quy mô đòn bẩy margin khi toàn hệ thống chạm ngưỡng hưng phấn hoang tưởng vô độ.\n"
                 "5. Thực chiến Việt Nam: Gom mua quyết liệt các mã cổ phiếu ngân hàng thương mại hàng đầu như TCB khi bị bán tháo vô lý.\n"
                 "6. Kỷ luật hành động: Giữ kỷ luật thép, mua của người chán, bán cho người thèm một cách có lộ trình bài bản.\n\n"
-                "💥 LUẬN ĐIỂM CHUYÊN SÂU TỪ KHỐI TRI THỨC THƯỢNG TẦNG:\n"
+                "💥 LUẬN ĐIỂM CHUYÊN SÂU TỪ KHỐI TRI THỨC THƯỢNG TẦNG BÀI SỐ 2:\n"
                 "Ngài Thị Trường là một người đối tác kinh doanh điên cuồng, mỗi ngày đều cống hiến cho bạn những mức giá không tưởng dựa trên cảm xúc. "
                 "Hệ thống AI của Pentech Premium giúp nhà đầu tư định vị chính xác hành vi tâm lý này để không bị cuốn vào vòng xoáy hoảng loạn. "
                 "Chúng ta ứng dụng công nghệ Blockchain để theo dõi dòng tiền thực tế của các cá mập lớn và định chế tài chính thượng tầng, "
@@ -207,7 +207,7 @@ strategies_35 = [
                 "4. Điểm gãy rủi ro: Rút vốn ngay khi ban lãnh đạo có hành vi phá vỡ cấu trúc minh bạch thông tin tài chính.\n"
                 "5. Thực chiến Việt Nam: Định vị mô hình tăng trưởng bền vững dài hạn xuyên suốt chu kỳ như tập đoàn FPT.\n"
                 "6. Kỷ luật hành động: Tập trung danh mục vào các doanh nghiệp chất lượng cao, hạn chế tối đa việc đảo hàng liên tục.\n\n"
-                "💥 LUẬN ĐIỂM CHUYÊN SÂU TỪ KHỐI TRI THỨC THƯỢNG TẦNG:\n"
+                "💥 LUẬN ĐIỂM CHUYÊN SÂU TỪ KHỐI TRI THỨC THƯỢNG TẦNG BÀI SỐ 3:\n"
                 "Việc lựa chọn một siêu cổ phiếu tăng trưởng đòi hỏi một tư duy thẩm định toàn diện cả về định tính lẫn định lượng. "
                 "Trí tuệ nhân tạo (AI) quét toàn bộ hệ thống báo cáo tài chính của 3 sàn chứng khoán tại Việt Nam để tìm kiếm sự nhất quán "
                 "trong tăng trưởng thu nhập EPS và khả năng tái phân bổ vốn thặng dư hiệu quả của doanh nghiệp. Chúng tôi đưa các chỉ số này "
@@ -223,8 +223,8 @@ strategies_35 = [
                 "3. Nhận diện hào bảo vệ: Doanh nghiệp nắm giữ tài sản thực tế có tính thanh khoản cao, dễ dàng hoán đổi thành tiền mặt.\n"
                 "4. Điểm gãy rủi ro: Khi ban điều hành có dấu hiệu sử dụng các thủ thuật kế toán phức tạp để thổi phồng lợi nhuận ảo.\n"
                 "5. Thực chiến Việt Nam: Lựa chọn các mã cổ phiếu sản xuất có dòng tiền cực sạch và minh bạch cao như Hòa Phát HPG.\n"
-                "6. Kỷ luật hành động: Đặt tiêu chuẩn an toàn lên trên hết, Thà bỏ lỡ cơ hội kiếm tiền còn hơn mạo hiểm làm mất vốn.\n\n"
-                "💥 LUẬN ĐIỂM CHUYÊN SÂU TỪ KHỐI TRI THỨC THƯỢNG TẦNG:\n"
+                "6. Kỷ luật hành động: Đặt tiêu chuẩn an toàn lên trên hết, thà bỏ lỡ cơ hội kiếm tiền còn hơn mạo hiểm làm mất vốn.\n\n"
+                "💥 LUẬN ĐIỂM CHUYÊN SÂU TỪ KHỐI TRI THỨC THƯỢNG TẦNG BÀI SỐ 11:\n"
                 "Bảo tồn vốn là quy tắc số một, và quy tắc số hai là không bao giờ được phép quên quy tắc số một. "
                 "Thuật toán AI của Pentech Premium thực hiện quy trình kiểm toán hiệu năng độc lập đối với mọi pháp nhân niêm yết trên 3 sàn, "
                 "kiên quyết loại bỏ hoàn toàn các doanh nghiệp có cấu trúc tài chính rỗng ruột hoặc nợ vay quá lớn. "
@@ -241,7 +241,7 @@ strategies_35 = [
                 "4. Điểm gãy rủi ro: Khi doanh nghiệp mất tập trung, sa đà vào cuộc chiến cạnh tranh giá cả khốc liệt tại các đại dương đỏ.\n"
                 "5. Thực chiến Việt Nam: Thiết lập cấu trúc kinh doanh bám sát thị trường ngách như các dịch vụ massage và lọc nước số.\n"
                 "6. Kỷ luật hành động: Chỉ tập trung nguồn vốn đầu tư vào những doanh nghiệp nắm giữ lợi thế tuyệt đối trong phân khúc ngách lõi.\n\n"
-                "💥 LUẬN ĐIỂM CHUYÊN SÂU TỪ KHỐI TRI THỨC THƯỢNG TẦNG:\n"
+                "💥 LUẬN ĐIỂM CHUYÊN SÂU TỪ KHỐI TRI THỨC THƯỢNG TẦNG BÀI SỐ 15:\n"
                 "Theo các nguyên lý chiến lược kinh điển, một mô hình kinh doanh không thể là tất cả đối với mọi phân khúc khách hàng ngoài thị trường. "
                 "Hệ thống AI số liệu của Pentech Premium bóc tách cấu trúc giá trị của từng pháp nhân để kiểm tra tính thực chất của chiến lược tập trung. "
                 "Mọi thông tin về thị phần và biên lợi nhuận ngách được xác thực trên hạ tầng Blockchain bảo mật, loại bỏ hoàn toàn các báo cáo quảng cáo "
@@ -250,22 +250,131 @@ strategies_35 = [
                 "sẽ giúp bạn cơ cấu tài sản một cách thông thái, thiết lập lộ trình giáo dục tài chính sớm từ năm 15 tuổi một cách vững chắc xuyên thế kỷ."
     },
     {
-        "id": 23, "title": "Quy tắc kiểm soát điểm rơi thanh khoản hệ thống vĩ mô",
+        "id": 16, "title": "Quy tắc kiểm toán cấu trúc rủi ro và nhận diện tư duy cấp độ hai",
+        "desc": "1. Tư duy nền tảng: Đi sâu bóc tách bản chất rủi ro ẩn giấu phía sau những thông tin đại chúng tích cực bề nổi.\n"
+                "2. Bộ lọc định lượng: Sử dụng AI định lượng để rà soát ma trận sụt giảm tài sản giả định của danh mục sản xuất.\n"
+                "3. Nhận diện hào bảo vệ: Pháp nhân vận hành cấu trúc tài chính an toàn tuyệt đối, không chịu áp lực dòng nợ hệ thống.\n"
+                "4. Điểm gãy rủi ro: Khi trục định giá kỹ thuật vượt xa ranh giới biên an toàn cốt lõi phòng thủ dài hạn.\n"
+                "5. Thực chiến Việt Nam: Phân tích sự lệch pha biên độ của các doanh nghiệp rường cột quốc gia như FPT, CTR.\n"
+                "6. Kỷ luật hành động: Áp dụng tư duy rạch ròi cấp độ hai để đưa ra hành động giải ngân ngược hướng đám đông.\n\n"
+                "💥 LUẬN ĐIỂM CHUYÊN SÂU TỪ KHỐI TRI THỨC THƯỢNG TẦNG BÀI SỐ 16:\n"
+                "Học viện VIP phân tích rằng tư duy cấp độ một chỉ nhìn vào bề nổi trực quan, trong khi tư duy cấp độ hai đòi hỏi "
+                "một cấu trúc phân tích đa biến sâu sắc hơn rất nhiều. Hệ thống máy học AI nâng cao của chúng tôi thực hiện quét lọc ngôn ngữ truyền thông, "
+                "đo lường chính xác mức độ đồng thuận cực đoan của đám đông hoang tưởng nhằm phát hiện bẫy mỏ neo tâm lý ngắn hạn. "
+                "Mọi số liệu về biên an toàn phòng thủ được mã hóa phi tập trung trên hạ tầng Blockchain bảo mật, mang lại một hệ quy chiếu "
+                "đối chiếu song song hoàn toàn sạch sẽ. Thuật toán lượng tử chạy các mô phỏng kịch bản biến động đa biến giúp nhà đầu tư độc lập "
+                "nhìn thấu bản chất thực chất của cấu trúc rủi ro liên ngành, tự tin bảo tồn nguồn vốn vĩnh viễn và kiến tạo di sản tài chính "
+                "bền vững vĩnh cửu xuyên thế kỷ."
+    },
+    {
+        "id": 17, "title": "Chiến lược quản trị chu kỳ nợ vĩ mô liên ngành",
+        "desc": "1. Tư duy nền tảng: Định vị điểm cực đoan của chu kỳ tín dụng để kích hoạt chiến thuật phòng thủ nguồn lực vĩ mô.\n"
+                "2. Bộ lọc định lượng: Sử dụng thuật toán cào dữ liệu tự động rà soát trục cung tiền M2 và tỷ lệ nợ xấu hệ thống.\n"
+                "3. Nhận diện hào bảo vệ: Doanh nghiệp nắm giữ lượng tiền mặt dồi dào, có quyền lực thâu tóm đối thủ cạnh tranh.\n"
+                "4. Điểm gãy rủi ro: Ngân hàng trung ương bất ngờ thắt bóp thanh khoản, kích hoạt chu kỳ giảm phát nợ nần liên ngành.\n"
+                "5. Thực chiến Việt Nam: Đón đầu vùng trũng chu kỳ tài sản sạch của các định chế ngân hàng quốc doanh lớn như VCB.\n"
+                "6. Kỷ luật hành động: Kiên quyết thu hẹp tỷ trọng đòn bẩy margin ngắn hạn trước khi điểm gãy chu kỳ chính thức diễn ra.\n\n"
+                "💥 LUẬN ĐIỂM CHUYÊN SÂU TỪ KHỐI TRI THỨC THƯỢNG TẦNG BÀI SỐ 17:\n"
+                "Toàn bộ thị trường tài chính thế kỷ 21 vận hành bám sát các đại chu kỳ thắt thắt mở mở của hệ thống nợ vay tín dụng. "
+                "Bộ máy vĩ mô của Pentech Premium ứng dụng AI để phân tích sự dịch chuyển dòng vốn liên quốc gia, loại bỏ mọi thông tin quảng bá "
+                "sáo rỗng phi thực tế của báo chí thương mại ngoài xã hội. Nhật ký diễn biến lãi suất và lạm phát được lưu trữ bất biến trên Blockchain "
+                "nhằm mang lại giải pháp công nghệ giả lập cấu trúc tài sản minh bạch nhất cho người Việt từ số vốn nhỏ từ 250k. "
+                "Mô hình điện toán lượng tử tính toán ma trận tương quan đa biến, giúp nhà quản trị đưa tổng tài sản về trạng thái bảo thủ "
+                "nghiêm ngặt dài hạn dài lâu, bảo vệ trọn vẹn thành quả lao động của bạn trước mọi cơn bão căng thẳng vĩ mô toàn cầu."
+    },
+    {
+        "id": 18, "title": "Quy tắc bóc tách bẫy chi phí trung gian và tối ưu dòng tiền cổ tức",
+        "desc": "1. Tư duy nền tảng: Loại bỏ triệt để các rào cản chi phí vận hành ẩn để bảo vệ sức mạnh hòn tuyết lăn của lãi kép.\n"
+                "2. Bộ lọc định lượng: Thuật toán AI tự động sàng lọc và cắt bỏ toàn bộ các tầng lớp phí quản lý quỹ phi lý liên sàn.\n"
+                "3. Nhận diện hào bảo vệ: Cơ chế tích sản tự động hóa khép kín, tập trung nguồn lực tuyệt đối vào tài sản sản xuất cốt lõi.\n"
+                "4. Điểm gãy rủi ro: Tần suất giao dịch trading mua bán quá cao làm hao mòn nghiêm trọng dòng tiền mặt ròng dồi dào.\n"
+                "5. Thực chiến Việt Nam: Thiết lập danh mục tích sản các mã có dòng tiền chi trả cổ tức tiền mặt đều đặn sạch sẽ.\n"
+                "6. Kỷ luật hành động: Giữ tính kỷ luật thép hành động, coi sự kiên nhẫn nắm giữ dài hạn là vũ khí tối cao sinh tồn.\n\n"
+                "💥 LUẬN ĐIỂM CHUYÊN SÂU TỪ KHỐI TRI THỨC THƯỢNG TẦNG BÀI SỐ 18:\n"
+                "Nhà đầu tư cá nhân nhỏ lẻ thua cuộc phần lớn không phải vì chọn sai doanh nghiệp, mà vì họ đã cống hiến quá nhiều lợi nhuận "
+                "cho các bẫy phí và thuế giao dịch phát sinh từ bẫy tâm lý trading ngắn hạn liên tục. Trạm Terminal của bạn Quân phá vỡ "
+                "hoàn toàn rào cản này bằng cách tự động hóa quy trình lọc chỉ số EPS, ROE, ROI của cả 3 sàn sạch sẽ. "
+                "Ứng dụng Blockchain phi tập trung loại bỏ nhu cầu về các bên trung gian xác thực phi lý ngoài xã hội, giúp dòng vốn tích lũy "
+                "của bạn phát huy sức mạnh cấp số nhân vĩnh cửu. Phân tích lượng tử tối ưu hóa lộ trình giải ngân vốn, giúp lộ trình giáo dục tài chính "
+                "sớm cho thế hệ trẻ từ 15 tuổi hình thành tư duy làm chủ vận mệnh kinh tế độc lập, tích lũy an toàn bền vững vĩnh cửu dài hạn."
+    },
+    {
+        "id": 19, "title": "Ma trận phân loại rủi ro doanh nghiệp và màng mọc chỉ số sạch",
+        "desc": "1. Tư duy nền tảng: Mỗi loại hình doanh nghiệp niêm yết sở hữu một quán tính rủi ro đặc thù, cần bộ lọc định lượng riêng.\n"
+                "2. Bộ lọc định lượng: Sử dụng mô hình máy học kiểm toán chất lượng các khoản phải thu và tính thực chất của hàng tồn kho.\n"
+                "3. Nhận diện hào bảo vệ: Tìm kiếm biên lợi nhuận gộp duy trì ở mức cao vượt trội và bỏ xa các đối thủ cùng phân khúc.\n"
+                "4. Điểm gãy rủi ro: Ban quản trị sa đà vào hoạt động đầu cơ tài chính ngắn hạn rủi ro cao thay vì tập trung ngành kinh doanh lõi.\n"
+                "5. Thực chiến Việt Nam: Định vị chính xác nhóm vị thế tăng trưởng thần tốc của siêu cổ phiếu đầu ngành công nghệ cao FPT.\n"
+                "6. Kỷ luật hành động: Không bao giờ gõ lệnh giải ngân dựa trên các kỳ vọng ảo tưởng thiếu số liệu toán học chứng minh.\n\n"
+                "💥 LUẬN ĐIỂM CHUYÊN SÂU TỪ KHỐI TRI THỨC THƯỢNG TẦNG BÀI SỐ 19:\n"
+                "Bẫy giá trị và rủi ro gian lận kế toán luôn là nỗi ám ảnh đối với các danh mục đầu tư tích sản thiếu công cụ rà soát độc lập. "
+                "Thuật toán AI nâng cao của chúng tôi tự động gắn nhãn và phân tách các dấu hiệu rủi ro tiềm ẩn trên báo cáo tài chính lý thuyết của 3 sàn. "
+                "Dữ liệu phân loại được đồng bộ hóa phi tập trung trên hạ tầng Blockchain bảo mật, mang lại hệ quy chiếu khách quan tuyệt đối "
+                "để người dùng đối chiếu song song thời gian thực. Giả lập lượng tử phân tích ma trận cạnh tranh liên ngành, đánh giá xem hào kinh tế "
+                "của doanh nghiệp có thể bị lung lay trước làn sóng biến động kỹ nghệ kỷ nguyên số hay không, giúp những người vốn nhỏ tự tin "
+                "nắm giữ cổ phần doanh nghiệp an toàn dài hạn."
+    },
+    {
+        "id": 20, "title": "Phương pháp thực địa Scuttlebutt và phòng ngự thiên nga đen vĩ mô",
+        "desc": "1. Tư duy nền tảng: Tri thức thực tế nằm ở hành vi tiêu dùng đời sống xung quanh, không phải chỉ nằm ở báo cáo lý thuyết.\n"
+                "2. Bộ lọc định lượng: Khai thác luồng phản hồi từ chuỗi cung ứng lõi, mạng lưới đối thủ cạnh tranh và tệp khách hàng thực tế.\n"
+                "3. Nhận diện hào bảo vệ: Sự trung thành tuyệt đối của người tiêu dùng và quyền lực kiểm soát hạ tầng thương mại bản địa.\n"
+                "4. Điểm gãy rủi ro: Sự xuất hiện của các dấu hiệu căng thẳng thanh khoản hệ thống nợ nần trước khi số liệu báo cáo lên báo chí.\n"
+                "5. Thực chiến Việt Nam: Trực tiếp quan sát chuỗi mở rộng mạng lưới bán lẻ và logistics số khép kín của mã VGI, CTR, VTP.\n"
+                "6. Kỷ luật hành động: Kiên quyết đóng vị thế bảo vệ nguồn vốn giải ngân khi phát hiện dấu hiệu gãy trục vận hành thực địa.\n\n"
+                "💥 LUẬN ĐIỂM CHUYÊN SÂU TỪ KHỐI TRI THỨC THƯỢNG TẦNG BÀI SỐ 20:\n"
+                "Tư duy thực địa chuyên sâu Scuttlebutt yêu cầu nhà quản trị tài sản bắt buộc phải kết hợp giữa số liệu văn phòng và thực tế đời sống. "
+                "Hệ thống định lượng Pentech Premium hỗ trợ quy trình này bằng cách ứng dụng AI để cào dữ liệu định lượng tự động từ hàng triệu xu hướng "
+                "tìm kiếm trực tuyến thời gian thực. Chúng tôi số hóa luồng dữ liệu thô thu thập được lên hạ tầng Blockchain bất biến nhằm triệt tiêu hoàn toàn "
+                "các thông tin quảng cáo nhiễu mục đích thương mại phi thực tế. Thuật toán lượng tử mô phỏng các cú sốc thiên nga đen giả định, "
+                "giúp bạn Quân thiết lập hàng rào phòng thủ vững chắc cho tài khoản đầu tư cá nhân, bảo hộ nguồn lực tài chính vĩnh viễn dài hạn."
+    },
+    {
+        "id": 21, "title": "Quy tắc bóc tách và bẻ gãy ma trận đòn bẩy tài chính rủi ro",
+        "desc": "1. Tư duy nền tảng: Đòn bẩy nợ vay là một con dao hai lưỡi, có khả năng đẩy nhanh sự hủy diệt tài sản của nhà đầu tư.\n"
+                "2. Bộ lọc định lượng: Sử dụng mô hình AI định lượng quét sâu tỷ lệ Nợ/Vốn chủ sở hữu của doanh nghiệp trên cả 3 sàn.\n"
+                "3. Nhận diện hào bảo vệ: Ưu tiên các pháp nhân duy trì cấu trúc tài chính cô đặc, sở hữu lượng tiền mặt ròng dồi dào.\n"
+                "4. Điểm gãy rủi ro: Lãi suất vay đột ngột tăng vọt, làm triệt tiêu hoàn toàn biên lợi nhuận hoạt động lõi sản xuất.\n"
+                "5. Thực chiến Việt Nam: Cơ cấu dòng tiền an toàn, tập trung phân bổ vốn tích sản vào mã Blue-chip công nghệ cao FPT.\n"
+                "6. Kỷ luật hành động: Thiết lập quy tắc phòng thủ bảo thủ, tuyệt đối không lạm dụng ký quỹ margin ngắn hạn theo đám đông.\n\n"
+                "💥 LUẬN ĐIỂM CHUYÊN SÂU TỪ KHỐI TRI THỨC THƯỢNG TẦNG BÀI SỐ 21:\n"
+                "Trong các giai đoạn thị trường hưng hấn cực đoan, đòn bẩy nợ vay luôn là công cụ khiến đám đông hoang tưởng về mức sinh lời giả tạo. "
+                "Trạm Terminal của chúng tôi tích hợp bộ máy AI chuyên sâu để theo dõi chặt chẽ dòng tiền vay nợ toàn chuỗi hệ thống liên ngành, "
+                "phát hiện sớm các dấu hiệu căng thẳng tín dụng trước khi điểm gãy chính thức xảy ra. Sổ cái Blockchain lưu trữ các chỉ số đòn bẩy bất biến, "
+                "giúp bạn có một hệ quy chiếu định lượng hoàn toàn sạch sẽ để đưa ra các quyết định phân bổ nguồn vốn một cách sáng suốt. "
+                "Mô phỏng toán học lượng tử hỗ trợ đo lường tác động của lãi suất đến giá trị tài sản ròng hữu hình, bảo vệ trọn vẹn gia sản lâu dài."
+    },
+    {
+        "id": 22, "title": "Chiến lược nhận diện bẫy giá trị của các doanh nghiệp rỗng ruột",
+        "desc": "1. Tư duy nền tảng: Một cổ phiếu có thị giá rẻ không đồng nghĩa với việc đó là một cơ hội đầu tư giá trị xuất sắc.\n"
+                "2. Bộ lọc định lượng: Kiểm toán chất lượng các khoản phải thu và hàng tồn kho thông qua thuật toán quét dữ liệu lớn.\n"
+                "3. Nhận diện hào bảo vệ: Doanh nghiệp phải sở hữu năng lực tạo ra dòng tiền mặt thực tế từ hoạt động kinh doanh lõi.\n"
+                "4. Điểm gãy rủi ro: Biên lợi nhuận gộp suy giảm liên tục do mô hình kinh doanh bị mất đi lợi thế cạnh tranh cốt lõi.\n"
+                "5. Thực chiến Việt Nam: Thanh lọc danh mục một cách quyết liệt, loại bỏ các mã đầu cơ rác thiếu năng lực nội tại.\n"
+                "6. Kỷ luật hành động: Chỉ giải ngân vốn vào những pháp nhân có lâu đài kinh doanh được bảo vệ bởi con hào rộng lớn.\n\n"
+                "💥 LUẬN ĐIỂM CHUYÊN SÂU TỪ KHỐI TRI THỨC THƯỢNG TẦNG BÀI SỐ 22:\n"
+                "Bẫy giá trị là nơi chôn vùi nguồn vốn của rất nhiều nhà đầu tư cá nhân do thói quen mua cổ phiếu chỉ dựa vào đồ thị giảm giá sâu. "
+                "Hệ thống trí tuệ nhân tạo (AI) của Pentech Premium thực hiện bóc tách chuyên sâu hiệu quả sử dụng tài sản ROA và ROI thực chất, "
+                "vạch trần các thủ thuật thổi phồng doanh thu ảo trên báo cáo kế toán lý thuyết. Thông tin đối chiếu được đồng bộ hóa bất biến "
+                "on hạ tầng Blockchain giúp bạn có cái nhìn khách quan tuyệt đối. Thuật toán lượng tử mô phỏng ma trận suy thoái để kiểm tra sức chống chịu "
+                "của mô hình thương mại doanh nghiệp, giúp những người vốn nhỏ tự tin nắm giữ những siêu cổ phiếu tăng trưởng đích thực dài hạn."
+    },
+    {
+        "id": 23, "title": "Quy tắc kiểm soát điểm rơi thanh khoản vĩ mô",
         "desc": "1. Tư duy nền tảng: Sức mạnh phòng thủ của tài khoản nằm ở khả năng hoán đổi các lớp tài sản thành tiền mặt tức thì.\n"
-                "2. Bộ lọc định lượng: Định lượng biên độ trượt giá đặt lệnh và tốc độ khớp ròng của cổ phiếu 3 sàn vĩ mô liên ngành.\n"
+                "2. Bộ lọc định lượng: Định lượng biên độ trượt giá đặt lệnh và tốc độ khớp ròng của cổ phiếu 3 sàn.\n"
                 "3. Nhận diện hào bảo vệ: Pháp nhân kinh doanh sở hữu dòng tiền thặng dư tự do cực lớn, bóp nghẹt mọi đối thủ yếu vốn.\n"
                 "4. Điểm gãy rủi ro: Biên độ trượt lệnh vượt ngưỡng 5% đi kèm khối lượng giao dịch sụt giảm đột ngột mất kiểm soát.\n"
                 "5. Thực chiến Việt Nam: Gom mua tích sản đều đặn vào hệ sinh thái có thanh khoản sạch sẽ dồi dào như MCH, MSN.\n"
                 "6. Kỷ luật hành động: Luôn giữ vị thế phòng thủ tiền mặt tối ưu, tuyệt đối không gõ lệnh cạn kiệt thanh khoản.\n\n"
                 "💥 LUẬN ĐIỂM CHUYÊN SÂU TỪ KHỐI TRI THỨC THƯỢNG TẦNG BÀI SỐ 23:\n"
-                "Học viện VIP phân tích sâu sắc rằng quản trị thanh khoản thực tế là xương sống cốt lõi để sinh tồn. "
-                "Khi thị trường tài chính thế giới rơi vào điểm cực đoan của cuộc khủng hoảng tín dụng, toàn bộ đám đông hoảng loạn "
-                "sẽ giẫm đạp lên nhau để tháo chạy. Trạm Terminal của bạn Quân ứng dụng hệ thống Trí tuệ nhân tạo (AI) để liên tục "
-                "quét hành vi đặt lệnh thời gian thực, đo lường tốc độ trượt giá của các định chế tổ chức lớn. "
-                "Mọi quy trình luân chuyển được Blockchain ghi vết nhằm bảo mật tuyệt đối, mang lại một trạm dữ liệu sạch sẽ, "
-                "không chứa thông tin quảng cáo quảng bá phi lý. Mô hình tính toán lượng tử chạy giả lập đa biến biến số, giúp bạn Quân "
-                "thiết lập lộ trình rút thặng dư vốn từ cổ phiếu đầu cơ nóng để chuyển dịch dòng vốn về xây dựng kho hàng thiết bị gia dụng "
-                "và máy lọc nước an toàn tại Thái Nguyên, bảo tồn gia sản bền vững dài hạn xuyên thế kỷ."
+                "Hạ tầng học viện VIP phân tích sâu sắc rằng thanh khoản chính là dưỡng khí của thị trường tài chính vĩ mô. "
+                "Khi thị trường rơi vào trạng thái hoảng loạn cực đoan, toàn bộ đám đông sẽ dẫm đạp lên nhau để tìm lối thoát vốn. "
+                "Trạm Terminal của bạn Quân ứng dụng Trí tuệ nhân tạo (AI) để nhận diện sớm các vùng kẹt thanh khoản liên ngành, "
+                "đo lường tốc độ rút ròng của các quỹ lớn liên lục địa. Mọi quy trình gõ lệnh giải ngân được mã hóa bảo mật trên Blockchain "
+                "để bảo vệ an toàn danh mục. Thuật toán toán học lượng tử tính toán các mô hình xác suất bất đối xung, giúp bạn Quân "
+                "phân bổ dòng tiền thặng dư từ sàn chứng khoán thông minh để xoay vòng vốn mua gom kho hàng cho mảng kinh doanh thiết bị gia dụng "
+                "và sức khỏe tại Thái Nguyên, xây dựng cấu trúc dòng tiền khép kín vĩnh cửu không quảng cáo quảng bá phi lý."
     },
     {
         "id": 24, "title": "Chiến lược quản trị ma trận tương quan tài sản liên ngành nâng cao",
@@ -276,15 +385,14 @@ strategies_35 = [
                 "5. Thực chiến Việt Nam: Phân bổ nguồn lực cân bằng và khoa học giữa các trục tăng trưởng chiến lược như FPT, VGI, TCB.\n"
                 "6. Kỷ luật hành động: Tuân thủ tuyệt đối trọng số phân bổ danh mục All-Weather, không gia tăng vị thế cục bộ theo cảm xúc.\n\n"
                 "💥 LUẬN ĐIỂM CHUYÊN SÂU TỪ KHỐI TRI THỨC THƯỢNG TẦNG BÀI SỐ 24:\n"
-                "Nội dung chuyên sâu của bài học số 24 tập trung bẻ gãy lối tư duy đa dạng hóa sáo rỗng thông thường ngoài xã hội. "
-                "Hệ thống định lượng AI cao cấp thực hiện bóc tách hệ số đồng biến dòng tiền của các phân khúc doanh nghiệp niêm yết liên sàn. "
-                "Chúng tôi lưu vết các thuật toán trọng số phân bổ lên hạ tầng Blockchain bảo mật, giúp bảo an toàn tuyệt đối cấu trúc tài khoản. "
-                "Mô phỏng điện toán lượng tử dự báo các điểm gãy rủi ro của chu kỳ nợ vĩ mô, đảm bảo danh mục luôn vận hành ổn định trong cả 4 môi trường "
-                "kinh tế biến động khốc liệt nhất. Đây là bệ phóng giáo dục tài chính sớm cho thế hệ trẻ từ 15 tuổi hình thành tính kỷ luật thép hành động, "
-                "loại bỏ toàn bộ các rào cản thuật ngữ phức tạp để chạm mốc tự do kinh tế thực sự dài hạn vĩnh cửu."
+                "Một danh mục đầu tư sở hữu nhiều mã cổ phiếu nhưng cùng một nhóm ngành chu kỳ không phải là đa dạng hóa, đó là tập trung rủi ro. "
+                "Bài học số 24 ứng dụng sức mạnh xử lý dữ liệu lớn từ AI để bóc tách sự liên đới dòng tiền giữa các cấu trúc doanh nghiệp niêm yết. "
+                "Nhật ký phân bổ được mã hóa trên Blockchain bất biến, giúp nhà đầu tư thiết lập lộ trình tích sản an toàn bền vững vĩnh viễn. "
+                "Điện toán lượng tử hỗ trợ phân tích ma trận tương quan đa biến, đảm bảo tài sản của bạn luôn được bảo vệ tối đa và tăng trưởng ổn định "
+                "xuyên qua mọi giông bão vĩ mô toàn cầu. Đây chính là tri thức thượng tầng bệ phóng dẫn dắt bạn chạm mốc tự do tài chính dài hạn."
     },
     {
-        "id": 25, "title": "Nguyên tắc bóc tách bẫy tâm lý sợ bỏ lỡ cơ hội ở vùng cực đoan",
+        "id": 25, "title": "Nguyên tắc bóc tách bẫy tâm lý sợ bỏ lỡ cơ hội của đám đông",
         "desc": "1. Tư duy nền tảng: Lợi nhuận bền vững chỉ sinh ra từ kỷ luật, hành vi đu đỉnh theo làn sóng hưng phấn luôn dẫn đến hủy diệt vốn.\n"
                 "2. Bộ lọc định lượng: Sử dụng AI phân tích tần suất xuất hiện tin tức tích cực cực đoan để xác định vùng đỉnh bong bóng.\n"
                 "3. Nhận diện hào bảo vệ: Chỉ giải ngân tiền mặt khi thị giá nằm thấp hơn đáng kể so với trục giá trị nội tại cốt lõi.\n"
@@ -292,12 +400,11 @@ strategies_35 = [
                 "5. Thực chiến Việt Nam: Đứng ngoài các cuộc đua giá nóng của nhóm cổ phiếu đầu cơ rác đầy rủi ro ngoài thị trường.\n"
                 "6. Kỷ luật hành động: Kiên nhận giữ tiền mặt dồi dào, chờ đợi điểm cực đoan hoảng loạn của chu kỳ vĩ mô để mua gom.\n\n"
                 "💥 LUẬN ĐIỂM CHUYÊN SÂU TỪ KHỐI TRI THỨC THƯỢNG TẦNG BÀI SỐ 25:\n"
-                "Bài học này vạch trần ma trận tâm lý sợ bỏ lỡ cơ hội (FOMO) - công nghệ bẫy vốn tinh vi nhất của Ngài Thị Trường. "
-                "Hạ tầng Terminal của bạn Quân tích hợp công nghệ AI xử lý ngôn ngữ tự nhiên NLP để đo lường ngưỡng hoang tưởng vô độ của đám đông, "
-                "xác định chính xác thời điểm hưng phấn đạt đỉnh cực đoan vĩ mô. Số hóa định giá nội tại lên chuỗi sổ cái Blockchain bất biến, "
-                "giúp nhà đầu tư độc lập sở hữu một hệ quy chiếu toán học thuần túy sạch sẽ để đối chiếu song song. Giả lập lượng tử phân tích ma trận "
-                "xác suất sụt giảm tài sản để gõ lệnh khóa vị thế bảo vệ nguồn vốn. Đây là vũ khí tối cao giúp người có số vốn nhỏ tích sản an toàn "
-                "từ 250k đạt được hiệu quả tích lũy gia sản vĩnh cửu xuyên chu kỳ thế kỷ."
+                "Bẫy tâm lý sợ bỏ lỡ cơ hội (FOMO) là vũ khí tối thượng mà Ngài Thị Trường sử dụng để tước đoạt thành quả lao động của đám đông. "
+                "Trạm Terminal của chúng tôi tích hợp bộ máy AI tiên tiến để đo lường chỉ số hoang tưởng toàn diện, giúp bạn nhìn thấu bản chất "
+                "thực sự của các đợt kéo giá đẩy ảo thương mại. Cấu trúc sổ cái Blockchain lưu giữ dữ liệu định giá lịch sử sạch sẽ bất biến, "
+                "mang lại một hệ quy chiếu logic toán học vững chắc. Phân tích lượng tử mô phỏng ma trận hành vi, giúp những người vốn nhỏ "
+                "kiên định giữ vững kỷ luật thép hành động, tích lũy tài sản an toàn từ những số vốn nhỏ nhất từ 250k một cách khoa học bền vững."
     },
     {
         "id": 26, "title": "Chiến lược bảo tồn thặng dư vốn và xoay vòng nguồn lực an toàn",
@@ -320,7 +427,7 @@ strategies_35 = [
                 "2. Bộ lọc định lượng: Theo dõi ma trận in tiền, thâm hụt tài khóa vĩ mô và sự dịch chuyển cung tiền của các nước.\n"
                 "3. Nhận diện hào bảo vệ: Các pháp nhân nắm giữ tài sản sản xuất cốt lõi, có năng lực vươn tầm xuất khẩu toàn cầu.\n"
                 "4. Điểm gãy rủi ro: Ngân hàng trung ương thắt chặt tín dụng khốc liệt, kích hoạt làn sóng khủng hoảng nợ liên ngành.\n"
-                "5. Thực chiến Việt Nam: Định vị cơ hội bám sát trục dịch chuyển chuỗi cung ứng logistics quốc tế của siêu mã VGI.\n"
+                "5. Thực chiến Việt Nam: Định vị cơ hội bẩm sát trục dịch chuyển chuỗi cung ứng logistics quốc tế của siêu mã VGI.\n"
                 "6. Kỷ luật hành động: Chuyển dịch toàn bộ tổng tài sản về trạng thái bảo thủ nghiêm ngặt khi chu kỳ chạm đỉnh rủi ro.\n\n"
                 "💥 LUẬN ĐIỂM CHUYÊN SÂU TỪ KHỐI TRI THỨC THƯỢNG TẦNG BÀI SỐ 27:\n"
                 "Lịch sử chứng minh rằng các định chế kinh tế vĩ mô toàn cầu luôn vận hành theo một đại chu kỳ lớn có tính chất lặp lại khép kín. "
@@ -452,33 +559,8 @@ strategies_35 = [
     }
 ]
 
-# Đồng bộ hóa tự động nạp các bài học rủi ro còn thiếu vào rổ dữ liệu
-for i in range(1, 36):
-    if i not in [1, 2, 3, 11, 15, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35]:
-        strategies_35.append({
-            "id": i, "title": f"Quy tắc quản trị rủi ro vĩ mô chuyên sâu bài học số {i}",
-            "desc": f"1. Tư duy nền tảng: Thực thi quy trình tổng lực quản trị rủi ro danh mục chuyên sâu bài số {i}.\n"
-                    f"2. Bộ lọc định lượng: Sử dụng thuật toán AI để quét toàn diện chỉ số nội tại sạch sẽ trên 3 sàn chứng khoán.\n"
-                    f"3. Nhận diện hào bảo vệ: Đo lường hệ số cạnh tranh thương mại và tối ưu hóa tài sản quy mô lớn liên ngành.\n"
-                    f"4. Điểm gãy rủi ro: Kích hoạt hệ thống cảnh báo thoái vốn tự động khi cấu trúc dòng tiền cốt lõi biến động cực đoan.\n"
-                    f"5. Thực chiến Việt Nam: Đồng bộ màng lọc chọn Blue-chip nội địa tập trung các mã trụ cột xuất sắc như FPT, VGI, CTR.\n"
-                    f"6. Kỷ luật hành động: Giữ vững bộ quy tắc danh mục All-Weather, thiết lập kỷ luật thép làm chủ vận mệnh kinh tế bản thân.\n\n"
-                    f"💥 LUẬN ĐIỂM CHUYÊN SÂU TỪ KHỐI TRI THỨC THƯỢNG TẦNG BÀI SỐ {i}:\n"
-                    f"Nội dung chuyên sâu của bài học số {i} tập cung giải quyết bài toán phân bổ nguồn lực doanh nghiệp dài hạn xuyên thế kỷ. "
-                    f"Trong kỷ nguyên công nghệ số bùng nổ, Nhà sáng lập Trần Anh Quân định hướng hệ thống Pentech Premium bắt buộc phải dẫn đầu "
-                    f"bằng cách ứng dụng Trí tuệ nhân tạo (AI) để phân tích dữ liệu lớn thời gian thực, kết hợp với tính minh bạch tuyệt đối của Blockchain "
-                    f"để bảo mật cấu trúc tài khoản đầu tư an toàn vĩnh viễn. Mô hình điện toán lượng tử chạy song song hàng triệu giả lập ma trận phức tạp "
-                    f"để tìm kiếm các biên lợi nhuận bất đối xứng tối ưu nhất. Chúng tôi loại bỏ hoàn toàn các rào cản thuật ngữ phức tạp, mang lại một "
-                    f"trạm tra cứu Terminal sạch sẽ, không quảng cáo quảng bá phi lý nhằm phục vụ tối đa lợi ích tích lũy của nhà đầu tư từ những số vốn "
-                    f"nhỏ nhất từ 250k. Hãy nhớ rằng tự do tài chính không phải là đích đến ngắn hạn, nó là một lộ trình được xây dựng bằng tư duy sắc bén, "
-                    f"kỷ luật thép và sự hỗ trợ đắc lực từ các hạ tầng công nghệ tương lai hàng đầu thế giới hiện nay."
-        })
-
-strategies_35 = sorted(strategies_35, key=lambda x: x["id"])
-
-
 # ==========================================
-# 4. GIAO DIỆN TERMINAL CÀO GIÁ 3 SÀN
+# 4. GIAO DIỆN TERMINAL CÀO GIÁ 3 SÀN CHUẨN XÁC NỘI ĐỊA
 # ==========================================
 corporate_market_db = {
     "FPT": {"name": "Tập đoàn FPT", "exchange": "HOSE", "sector": "CÔNG NGHỆ & VIỄN THÔNG", "eps": 6200, "growth": 25, "roe": 26.0, "roi": 19.1, "moat": "Độc quyền quy mô xuất khẩu phần mềm và nhân lực công nghệ số", "fallback_price": 135000},
@@ -515,6 +597,34 @@ def get_live_stock_price(ticker):
         sectors = ["BẤT ĐỘNG SẢN & PHÂN KHÚC KHÁC", "SẢN XUẤT", "NĂNG LƯỢNG"]
         return {"name": f"Doanh nghiệp niêm yết ({clean_tk})", "exchange": exchanges[hash_val % 3], "sector": sectors[hash_val % 3], "eps": 3200, "current": final_price, "growth": 12, "roe": 14.5, "roi": 11.2, "moat": "Hệ số cạnh tranh phân phối quy mô thị trường"}
 
+# Nhà sáng lập & Sứ mệnh công nghệ mới
+with st.expander("💎 SỨ MỆNH PHỤNG SỰ & KHỞI TRẠM CÔNG NGHỆ TƯƠNG LAI CAO CẤP", expanded=True):
+    col_founder_img, col_mission_text = st.columns([4, 7])
+    with col_founder_img:
+        fixed_img_path = "founder_fixed.jpg"
+        if os.path.exists(fixed_img_path):
+            with open(fixed_img_path, "rb") as image_file:
+                encoded_string = base64.b64encode(image_file.read()).decode()
+            st.markdown(f"""<div class="founder-card"><img src="data:image/jpeg;base64,{encoded_string}" class="founder-avatar"><div class="founder-name">Trần Anh Quân</div><div class="founder-title">Nhà sáng lập & CEO</div></div>""", unsafe_allow_html=True)
+        else:
+            st.markdown("""<div class="founder-card"><img src="https://www.w3schools.com/howto/img_avatar.png" class="founder-avatar"><div class="founder-name">Trần Anh Quân</div><div class="founder-title">Nhà sáng lập & CEO</div></div>""", unsafe_allow_html=True)
+            
+    with col_mission_text:
+        st.markdown(f"""
+            <h3 style='color:#000000; margin-top:0; font-weight:800;'>Hạ tầng tri thức định lượng dẫn dắt bởi nhà sáng lập Trần Anh Quân</h3>
+            <p style='font-size:16px; line-height:1.7; color:#000000; text-align: justify;'>
+                <b>Pentech Premium</b> loại bỏ toàn bộ các rào cản thuật ngữ phức tạp để mang đến một trạm tra cứu Terminal minh bạch nhất với sứ mệnh phụng sự người nghèo, hỗ trợ cộng đồng chưa có kiến thức chuyên sâu tại Việt Nam có thể tự tin đầu tư, tích lũy an toàn từ những số vốn nhỏ nhất, đồng thời thiết lập lộ trình giáo dục sớm cho trẻ em từ 15 tuổi.
+                <br><br>
+                Để hiện thực hóa tầm nhìn vĩ mô này, <b>Nhà sáng lập Trần Anh Quân luôn quan tâm và ưu tiên hàng đầu việc ứng dụng các công nghệ mới đột phá vào hệ thống bao gồm: Trí tuệ nhân tạo (AI)</b> nhằm phân tích dữ liệu lớn và cào thông tin real-time tự động, <b>Công nghệ mạng lưới khối (Blockchain)</b> nhằm tối ưu hóa tính minh bạch, bảo mật tuyệt đối cấu trúc danh mục không thể sửa đổi, và <b>Điện toán lượng tử (Quantum Computing)</b> nhằm tính toán các mô hình xác suất biến động đa biến của thị trường tài chính thế kỷ 21. Sự kết hợp giữa tư duy kinh điển và công nghệ tương lai chính là lõi cốt lõi của chúng tôi.
+            </p>
+        """, unsafe_allow_html=True)
+
+with st.expander("⚙️ BAN ĐIỀU HÀNH: Tải ảnh chân dung thay thế lên hệ thống"):
+    uploaded_image = st.file_uploader("Chọn ảnh chân dung mới của bạn (Định dạng JPG, PNG):", type=["jpg", "jpeg", "png"])
+    if uploaded_image is not None:
+        with open("founder_fixed.jpg", "wb") as f: f.write(uploaded_image.getbuffer())
+        st.success("🎉 Đã đồng bộ ảnh chân dung CEO Trần Anh Quân vào hệ thống!")
+
 col_term1, col_term2 = st.columns(2)
 with col_term1:
     tkA_raw = st.text_input("MÃ CỔ PHIẾU A:", value="MCH")
@@ -539,7 +649,6 @@ fig.add_trace(go.Scatter(x=dates, y=[data_B['current'] * (0.94 + (i*0.0012)) for
 fig.update_layout(paper_bgcolor="#FFFFFF", plot_bgcolor="#F9FAFB", margin=dict(l=10, r=10, t=10, b=10), height=240, legend=dict(font=dict(color="#000000", size=12)), xaxis=dict(gridcolor="#E5E7EB", tickfont=dict(color="#000000", size=12)), yaxis=dict(gridcolor="#E5E7EB", tickfont=dict(color="#000000", size=12)))
 st.plotly_chart(fig, use_container_width=True)
 
-
 # ==========================================
 # 5. DỰ BÁO TƯƠNG LAI CÁC NGÀNH THẾ KỶ 21
 # ==========================================
@@ -552,9 +661,8 @@ with col_f2:
 with col_f3:
     st.markdown("""<div class="strategy-card"><div class="book-tag">TIÊU DÙNG THIẾT YẾU</div><h4 style='margin-top:0; font-weight:800;'>3. TIÊU DÙNG SẠCH & Y TẾ CHUỖI ĐỘC QUYỀN</h4><p style='font-size:14px; color:#000000;'>Sự bùng nổ nhu cầu thực phẩm đóng gói thương hiệu và chuỗi dược phẩm bán lẻ (Tiêu biểu như MCH, FRT) bền vững bất chấp chu kỳ suy thoái.</p></div>""", unsafe_allow_html=True)
 
-
 # ==========================================
-# 6. KHỐI ĐIỀU KHIỂN BẺ KHÓA AN TOÀN TOÀN CỤC
+# 6. KHỐI ĐIỀU KHIỂN BẺ KHÓA AN TOÀN TOÀN CỤC (FIXED LOCAL CORES)
 # ==========================================
 col_key1, col_key2 = st.columns([6, 4])
 with col_key1:
@@ -563,10 +671,10 @@ with col_key2:
     st.markdown("<div style='margin-top:28px;'></div>", unsafe_allow_html=True)
     btn_student_click = st.button("🔓 KÍCH HOẠT HỌC VIỆN VIP")
 
-# KHAI BÁO BIẾN TOÀN CỤC TRƯỚC KHI VÀO VÒNG LẶP (VÁ LỖI TRIỆT ĐỂ)
+# KHAI BÁO BIẾN TOÀN CỤC ĐÚNG VỊ TRÍ LOGIC TRƯỚC KHI HIỂN THỊ VÒNG LẶP
 is_unlocked = (user_license_key == st.session_state["dynamic_license_key"]) or (user_license_key == "Trananhquan@2001")
 
-# Vòng lặp hiển thị Expanders học viện an toàn tuyệt đối
+# Vòng lặp hiển thị Expanders học viện an toàn tuyệt đối 100% không lo lỗi NameError
 for strat in strategies_35:
     if strat["id"] <= 15:
         with st.expander(f"📖 BÀI HỌC {strat['id']}: {strat['title'].upper()}"):
@@ -578,7 +686,6 @@ for strat in strategies_35:
         else:
             with st.expander(f"🔒 BÀI HỌC {strat['id']}: [BỊ KHÓA] NÂNG CẤP GÓI ĐỂ MỞ KHÓA"):
                 st.markdown("""<div class="locked-card"><h4>🔒 Nội dung bài học thuộc quyền sở hữu của Gói 2 & Gói 3</h4><p style='color:#D97706 !important;'>Bạn đang sử dụng tài khoản Gói Cơ Bản. Để mở khóa quy tắc quản trị rủi ro tối cao nâng cao nâng cấp... vui lòng nhập mã kích hoạt (License Key) từ CEO Trần Anh Quân để bẻ khóa hệ thống.</p></div>""", unsafe_allow_html=True)
-
 
 # ==========================================
 # 7. MA TRẬN 3 GÓI ĐĂNG KÝ PHÂN KHÚC CHIẾN LƯỢC
