@@ -17,8 +17,11 @@ st.set_page_config(
     initial_sidebar_state="collapsed"
 )
 
-# Giữ mã xác minh Google Search Console của bạn Quân
-st._config.set_option("html.additionalHeadContent", '<meta name="google-site-verification" content="448da2da278475de" />')
+# Thử nghiệm thiết lập mã xác minh Google Search Console an toàn
+try:
+    st._config.set_option("html.additionalHeadContent", '<meta name="google-site-verification" content="448da2da278475de" />')
+except Exception:
+    pass
 
 # Khởi tạo bộ nhớ ngầm lưu trữ mật khẩu kích hoạt trên máy chủ
 if "dynamic_license_key" not in st.session_state:
@@ -29,7 +32,7 @@ if "dynamic_license_key" not in st.session_state:
 # ==========================================
 st.markdown("""
     <style>
-    html, body, [data-testid="stAppViewContainer"], [data-testid="stHeader"], [data-testid="stVerticalBlock"] {
+    html, body, [data-testid="stAppViewContainer"], [data-testid="stHeader"] {
         background-color: #FFFFFF !important;
         color: #000000 !important;
         font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
@@ -130,7 +133,8 @@ st.markdown("""
         padding: 14px !important;
     }
     
-    input {
+    /* Tối ưu hóa hiển thị text box nhập liệu không bị lỗi màu chữ */
+    div[data-testid="stTextInput"] input {
         background-color: #FFFFFF !important;
         color: #000000 !important;
         border: 2px solid #000000 !important;
@@ -357,7 +361,7 @@ strategies_35 = [
                 "Hệ thống trí tuệ nhân tạo (AI) của Pentech Premium thực hiện bóc tách chuyên sâu hiệu quả sử dụng tài sản ROA và ROI thực chất, "
                 "vạch trần các thủ thuật thổi phồng doanh thu ảo trên báo cáo kế toán lý thuyết. Thông tin đối chiếu được đồng bộ hóa bất biến "
                 "on hạ tầng Blockchain giúp bạn có cái nhìn khách quan tuyệt đối. Thuật toán lượng tử mô phỏng ma trận suy thoái để kiểm tra sức chống chịu "
-                "của mô hình thương mại doanh nghiệp, giúp những người vốn nhỏ tự tin nắm giữ những siêu cổ phiếu tăng trưởng đích thực dài hạn."
+                "of mô hình thương mại doanh nghiệp, giúp những người vốn nhỏ tự tin nắm giữ những siêu cổ phiếu tăng trưởng đích thực dài hạn."
     },
     {
         "id": 23, "title": "Quy tắc kiểm soát điểm rơi thanh khoản vĩ mô",
@@ -517,7 +521,7 @@ strategies_35 = [
                 "2. Bộ lọc định lượng: Cắt bỏ hoàn toàn các rào cản thuật ngữ phức tạp, bám sát màng mọc chỉ số cơ bản EPS, ROE dồi dào.\n"
                 "3. Nhận diện hào bảo vệ: Hệ thống Terminal sạch sẽ, tự động tối ưu chi phí vận hành bảo vệ trọn vẹn dòng tiền tích lũy.\n"
                 "4. Điểm gãy rủi ro: Khi nhà đầu tư đại chúng bị lôi kéo vào các cạm bẫy lừa đảo cam kết lãi suất ảo phi lý ngoài xã hội.\n"
-                "5. Thực chiến Việt Nam: Triển khai kế hoạch giải ngân tích lũy đều đặn hàng tháng vào rổ cổ phiếu trụ cột Blue-chip nội địa.\n"
+                "5. Thực chiến Việt Nam: Triền khai kế hoạch giải ngân tích lũy đều đặn hàng tháng vào rổ cổ phiếu trụ cột Blue-chip nội địa.\n"
                 "6. Kỷ luật hành động: Kiên trì thực hiện lộ trình, tích lũy an toàn và bền vững từ số vốn nhỏ nhất từ 250k mỗi ngày.\n\n"
                 "💥 LUẬN ĐIỂM CHUYÊN SÂU TỪ KHỐI TRI THỨC THƯỢNG TẦNG BÀI SỐ 33:\n"
                 "Sứ mệnh cao cả phụng sự xã hội của Pentech Premium chính là kiến tạo cơ hội tiếp cận tri thức và hạ tầng tài chính công bằng cho người Việt. "
@@ -573,17 +577,20 @@ corporate_market_db = {
     "TCB": {"name": "Techcombank", "exchange": "HOSE", "sector": "NGÂN HÀNG", "eps": 5810, "growth": 24, "roe": 18.2, "roi": 14.8, "moat": "Lợi thế chi phí vốn CASA vượt trội và hệ sinh thái tài chính cao cấp", "fallback_price": 48500}
 }
 
+# Sử dụng Streamlit Cache để lưu kết quả API trong 60 giây, giúp tăng tốc hiệu năng
+@st.cache_data(ttl=60, show_spinner=False)
 def get_live_stock_price(ticker):
     clean_tk = str(ticker).strip().upper()
     if not clean_tk:
         return {"name": "Chưa nhập mã", "exchange": "HOSE", "sector": "HỆ THỐNG", "eps": 2000, "current": 10000, "growth": 12, "roe": 12.0, "roi": 9.0, "moat": "Năng lực nội tại thương mại"}
+    
     live_price = 0
     try:
         url = f"https://apipublocks.tcbs.com.vn/api/v1/ticker/{clean_tk}/overview"
         response = requests.get(url, timeout=2)
         if response.status_code == 200:
             live_price = float(response.json().get("price", 0)) * 1000
-    except:
+    except Exception:
         live_price = 0
 
     hash_val = sum(ord(c) for c in clean_tk)
@@ -622,7 +629,8 @@ with st.expander("💎 SỨ MỆNH PHỤNG SỰ & KHỞI TRẠM CÔNG NGHỆ TƯ
 with st.expander("⚙️ BAN ĐIỀU HÀNH: Tải ảnh chân dung thay thế lên hệ thống"):
     uploaded_image = st.file_uploader("Chọn ảnh chân dung mới của bạn (Định dạng JPG, PNG):", type=["jpg", "jpeg", "png"])
     if uploaded_image is not None:
-        with open("founder_fixed.jpg", "wb") as f: f.write(uploaded_image.getbuffer())
+        with open("founder_fixed.jpg", "wb") as f: 
+            f.write(uploaded_image.getbuffer())
         st.success("🎉 Đã đồng bộ ảnh chân dung CEO Trần Anh Quân vào hệ thống!")
 
 col_term1, col_term2 = st.columns(2)
@@ -671,10 +679,16 @@ with col_key2:
     st.markdown("<div style='margin-top:28px;'></div>", unsafe_allow_html=True)
     btn_student_click = st.button("🔓 KÍCH HOẠT HỌC VIỆN VIP")
 
-# KHAI BÁO BIẾN TOÀN CỤC ĐÚNG VỊ TRÍ LOGIC TRƯỚC KHI HIỂN THỊ VÒNG LẶP
+# Đồng bộ hóa logic kích hoạt mã xác thực
 is_unlocked = (user_license_key == st.session_state["dynamic_license_key"]) or (user_license_key == "Trananhquan@2001")
 
-# Vòng lặp hiển thị Expanders học viện an toàn tuyệt đối 100% không lo lỗi NameError
+if btn_student_click:
+    if is_unlocked:
+        st.success("🎉 Mở khóa thành công hệ thống học viện VIP!")
+    else:
+        st.error("🔒 Mã kích hoạt chưa chính xác. Vui lòng liên hệ ban điều hành.")
+
+# Vòng lặp hiển thị các bài học dựa trên trạng thái kích hoạt tài khoản
 for strat in strategies_35:
     if strat["id"] <= 15:
         with st.expander(f"📖 BÀI HỌC {strat['id']}: {strat['title'].upper()}"):
@@ -708,7 +722,12 @@ with col_form:
         st.markdown("<b style='color:#000000; font-size:16px;'>📩 ĐĂNG KÝ THAM GIA KHÓA HỌC & ỦY THÁC HỢP TÁC CHIẾN LƯỢC VIP</b>", unsafe_allow_html=True)
         v_name = st.text_input("Tên Nhà đầu tư / Pháp nhân Tổ chức:")
         v_phone = st.text_input("Đường dây liên hệ trực tiếp (Zalo):")
-        st.form_submit_button("🚀 KÍCH HOẠT QUY TRÌNH QUẢN TRỊ TÀI SẢN CAO CẤP")
+        submit_form = st.form_submit_button("🚀 KÍCH HOẠT QUY TRÌNH QUẢN TRỊ TÀI SẢN CAO CẤP")
+        if submit_form:
+            if v_name and v_phone:
+                st.success("📩 Tiếp nhận thông tin thành công! Ban điều hành sẽ sớm kết nối qua Zalo.")
+            else:
+                st.warning("⚠️ Vui lòng hoàn thành thông tin trước khi nhấn nút kích hoạt.")
 with col_contact:
     st.markdown(f"""<div style="background-color: #FFFFFF; padding: 25px; border: 2px solid #000000; height: 195px; border-radius: 4px;"><span style="color: #000000; font-size: 12px; display: block; margin-bottom: 5px; font-weight:700; letter-spacing:1px;">🏢 ĐƯỜNG DÂY NÓNG BAN ĐIỀU HÀNH QUỸ</span><span style="font-size: 30px; font-weight: 900; color: #000000; display: block; letter-spacing: -1px;">0327.625.853</span><p style="font-size: 14px; color: #000000; margin-top: 12px; line-height: 1.5; font-weight: 500;">Liên hệ trực tiếp với Ban điều hành Pentech Premium qua Hotline/Zalo cá nhân của Mr. Trần Anh Quân: <b style='color:#000000;'>0327.625.853</b> để nhận giải pháp cơ cấu tài sản và cấu hình bảo mật thông tin.</p></div>""", unsafe_allow_html=True)
 
@@ -733,9 +752,10 @@ with st.expander("🛠️ TRẠM QUẢN TRỊ THƯỢNG TẦNG (CHỈ DÀNH RIÊ
         new_key = st.text_input("Cài đặt Mật khẩu kích hoạt mới cho Gói 2 / Gói 3 tại đây:", value=st.session_state['dynamic_license_key'])
         if st.button("💾 LƯU THAY ĐỔI MẬT KHẨU"):
             st.session_state["dynamic_license_key"] = new_key
-            st.success(f"🚀 Đã cập nhật thành công! Từ bây giờ khách hàng phải gõ '{new_key}' mới xem được đủ 35 bài học.")
+            st.success(f"🚀 Cập nhật thành công! Mật khẩu bẻ khóa mới là: '{new_key}'")
+            st.rerun()
     elif admin_auth != "":
-        st.error("🔒 Mật mã Quản trị sai! Truy cập bị từ chối.")
+        st.error("🔒 Mật mã Quản trị chưa chính xác. Truy cập bị từ chối.")
     st.markdown("</div>", unsafe_allow_html=True)
 
 # CHÂN TRANG PHÁP LÝ TỔ CHỨC
