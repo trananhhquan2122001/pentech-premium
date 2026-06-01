@@ -60,7 +60,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # ==========================================
-# 3. ENGINE DỮ LIỆU ĐỊNH CHẾ
+# 3. ENGINE DỮ LIỆU ĐỊNH CHẾ (Định nghĩa trước khi dùng)
 # ==========================================
 corporate_market_db = {
     "FPT": {"name": "Tập đoàn FPT", "exchange": "HOSE", "sector": "CÔNG NGHỆ", "eps": 6200, "growth": 25, "roe": 26.0, "roi": 19.1, "moat": "Độc quyền xuất khẩu phần mềm", "fallback_price": 135000},
@@ -73,13 +73,7 @@ def get_live_stock_price(ticker):
     if clean_tk in corporate_market_db:
         base_data = corporate_market_db[clean_tk]
         return {**base_data, "current": base_data["fallback_price"]}
-    # Dữ liệu mặc định cho các mã VN30 khác
-    default = {
-        "name": f"Cổ phiếu {clean_tk}", "exchange": "HOSE", "sector": "ĐA NGÀNH",
-        "eps": 4500, "growth": 12, "roe": 15.0, "roi": 12.5,
-        "moat": "Lợi thế cạnh tranh trung bình", "fallback_price": 50000
-    }
-    return {**default, "current": default["fallback_price"]}
+    return {"name": "Mã lạ", "exchange": "HOSE", "sector": "N/A", "eps": 0, "current": 10000, "growth": 0, "roe": 0, "roi": 0, "moat": "N/A"}
 
 # Hàm giả lập dữ liệu lịch sử 1 năm
 def get_historical_data(ticker):
@@ -133,10 +127,9 @@ with tab1:
     upside = (fair_value / ticker_data['current'] - 1) * 100
     st.metric("Giá trị hợp lý ước tính", f"{fair_value:,.0f} VNĐ", delta=f"{upside:+.1f}%", delta_color="normal")
 
-# ------------------ TAB 2: SO SÁNH NGÀNH ------------------
+# ------------------ TAB 2: SO SÁNH NGÀNH (ĐÃ SỬA LỖI KEYERROR) ------------------
 with tab2:
     st.subheader("🏭 So sánh các chỉ số tài chính với nhóm ngành")
-    # Lấy danh sách doanh nghiệp cùng ngành (giả lập)
     sector = ticker_data['sector']
     peers = [code for code, data in corporate_market_db.items() if data['sector'] == sector]
     if not peers:
@@ -145,7 +138,15 @@ with tab2:
     comp_data = []
     for code in peers:
         d = corporate_market_db.get(code, ticker_data)
-        comp_data.append({"Mã": code, "ROE (%)": d['roe'], "ROIC (%)": d['roi'], "EPS": d['eps'], "P/E (ước)": d['current']/d['eps'] if d['eps']>0 else 0})
+        # Lấy giá: ưu tiên 'current' nếu có, nếu không dùng 'fallback_price'
+        price = d.get('current', d.get('fallback_price', 0))
+        comp_data.append({
+            "Mã": code,
+            "ROE (%)": d['roe'],
+            "ROIC (%)": d['roi'],
+            "EPS": d['eps'],
+            "P/E (ước)": price / d['eps'] if d['eps'] > 0 else 0
+        })
     df_comp = pd.DataFrame(comp_data)
     st.dataframe(df_comp.style.format({"EPS": "{:,.0f}", "P/E (ước)": "{:.1f}"}), use_container_width=True)
     
@@ -227,7 +228,7 @@ with tab4:
         "Tập trung cổ đông lớn": 0.7
     }
     df_risk = pd.DataFrame(list(risk_scores.items()), columns=["Chỉ số", "Mức rủi ro (cao=1)"])
-    fig_risk = go.Figure(data=go.Bar(x=df_risk["Chỉ số"], y=df_risk["Mức rủi ro (cao=1)"], marker_color=['#D4AF37' if x<0.5 else '#0A192F' for x in df_risk["Mức rủi ro (cao=1)"] ]))
+    fig_risk = go.Figure(data=go.Bar(x=df_risk["Chỉ số"], y=df_risk["Mức rủi ro (cao=1)"], marker_color=['#D4AF37' if x<0.5 else '#0A192F' for x in df_risk["Mức rủi ro (cao=1)"]]))
     fig_risk.update_layout(title="Xếp hạng rủi ro tổng hợp", yaxis_title="Điểm (1 = rủi ro cao nhất)", template="plotly_white")
     st.plotly_chart(fig_risk, use_container_width=True)
     
